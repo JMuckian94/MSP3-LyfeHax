@@ -76,25 +76,14 @@ Here are the links to my wireframes:
 
 ## Features to be Implemented
 
-### Timer
-
-I want to limit the amount of time the user has to answer questions by implementing a timer set to 10 seconds. This will put pressure on the player but should enhance enjoyment levels by increasing the challenge.
-
-### Right / Wrong Feedback
-
-I want to have the option buttons change color to give the player feedback whether they got the right or wrong answer.
-
-### Different Final Score Responces
-
-I want to implement different messages to appear depending on how well the player did.
-
-## Technologies Used
+...
 
 ### Languages
 
-- HTML
-- CSS
-- Javascript
+- HTML5
+- CSS3
+- Javascript ES2015
+- Python3
 
 ### Framworks & External Liberaries
 
