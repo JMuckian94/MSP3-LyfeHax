@@ -41,17 +41,35 @@ I plan on implementing an admin page which will allow someone with admin privila
 
 ### User Requirements and Expectations
 
+### Site Owner/Administrator
+
 #### Requirements
 
-...
+For the Site Owner/Administrator's purposes I will require the site to collect and store data from user posts, such as text, date, username, and special key data. The text will be the users tips or 'lyfehax' as I will be naming them. The date will only include the date in the format: DD/MM/YYYY. No time will be included. The username will be that which the user chose as an identity for posting on the site. The special key will be assigned to the individual users so that they, and their previous contributions and actions on the site, can be tracked and identified quickly in the database. 
+
+I want user posts to appear in the middle of the page with a margin on each side for medium sized screens upwards. The posts will take up the full screen on small screens and mobile devices. The posts will be scrollable with the newest posts appearing at the top and the oldest appearing at the bottom.
 
 #### Expectations
 
-...
+I expect the site to load correctly without visual errors. This means having all images, fonts and formats loading without overflowing or clashing with other sections of the page. I want the posts of users to be clearly distinguishable between each other with margins and borders marking where one post ends and the next begins. I want the username and date of posting to appear in the appropriate location on every post, with username in top left and date in top right, and to be of legible size on all screen widths. 
+
+I expect the site to scale appropriately on all screen widths and utilise the BOOTSTRAP grid effectively. I want the colours and images to be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
+
+### Average User
+
+#### Requirements
+
+I require the site to allow me to make a membership account and post onto the main page for other users to see. I also need the site to allow me to easily navigate around it. I need to be able to see other users posts with key identifiers such as usernames and dates posted. I need the site to scale appropriately for my large and small devices so that usability or appearance isn't affected when switching between them. 
+
+#### Expectations
+
+I expect the navigation elements to be similiar to what I have seen on other sites, so I can easily jump in without having to learn specific UI quirks. I want the navbar to be sticky so that I can always click on the site logo to bring me back to the home page. For mobile devices and small screens I want the nav elements to merge into a burger icon which produces a menu transition when tapped. I want all the text and posts to be styled and ordered well.
 
 ### Design Choices
 
-...
+For small screens I have gone with a sticky navbar with the site logo and burger icon visible. Clicking on the logo will take the user back to the top and refresh the page. The burger will produce a menu of navigation options with pages such as "about", "contact us", and "...". The posts on mobile and small screens will be minimised to a preview of the content with the title of the post and the first couple of lines visible with a "Read more..." item that will make the post full screen and the rest of the text visible.
+
+Each post will have clear border markings to seperate them from each other. Usernames will be positioned top left and date top right of each post.
 
 #### Fonts
 
