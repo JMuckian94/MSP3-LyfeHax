@@ -10,10 +10,10 @@
     
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Become a Member</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('member') }}">Become a Member</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
         </ul>
     </nav>
 
