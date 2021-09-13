@@ -1,0 +1,45 @@
+body {
+    font-size: 2rem;
+    color:#222222;
+    /* font-family:; */
+}
+
+p {
+    line-height: 1.5;
+    margin: 3rem 0;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+}
+
+a {
+    color:#222222;
+}
+
+a:focus, a:hover {
+    color: #ff0000;
+    transition: 100ms;
+}
+
+.navbar-brand{
+    font-size: 3rem;
+}
+
+#home-image {
+    background-image: url("../img/cesar-carlevarino-aragon-NL_DF0Klepc-unsplash.jpg");
+    background-size: auto;
+    background-color: #494947;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
