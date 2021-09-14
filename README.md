@@ -9,13 +9,9 @@ To create a life hacks quick tips website where users can share their tips and t
 
 ## UX
 
-For responsiveness on all platforms I will be using Bootstrap to control the spacing and layout of the page.
+For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, About, Join Up, and Contact. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked.
 
-I am going for a simple layout with content appearing in a scrollable list in the center of the page. To the sides will appear auxillary links, categories, or post dates. Still undecided.
-
-The header will contain a website logo, some nav elements which can merge into a hamburger on smaller screens and maybe a headline and search function. Still to be decided.
-
-For users who want to become members and post I will implement a form pop-up which will ask for email, password, and a choice of user name. Once the user has created an account they will then be able to post content. 
+The home page has two images depicting workshops, tool collections, and arts and crafts. These are to signal the purpose of the site to first time users and to add visual decoration.
 
 I plan on implementing an admin page which will allow someone with admin privilages to edit and delete posts. This allows the admin to moderate the page in adherence to set community guidelines.
 
