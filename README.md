@@ -54,8 +54,15 @@ The about page will have similar hero image layout at the top of the page. Benea
 
 On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create posts of their own where a standard user is only able to read posts. The form has three input sections: Email, Password (IMPLEMENT A REPEAT PASSWORD CHECK), and Username. Once the user has completed the form correctly, and clicked the submit button, the text on the page will change and the data they inputted in the form will be saved to the database. 
 
-###
-### User Stories
+### Contact Page
+
+This page will have a contact form to fill out for anyone who wants to contact the site owner. It includes fields for the users email and a text area section for submitting queries. There is a submit button at the bottom of the form. (A MESSAGE RECIEVED NOTIFICATION NEEDS TO BE IMPLEMENTED). This page is decorated similarly to the others with varios images in appropriate places.
+
+### Footer
+
+The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax.ie became a recognisable brand and needed a social media footprint like most modern companies.
+
+## User Stories
 
 - As a user, I want to ...
 - As a user, I want to ...
@@ -67,31 +74,29 @@ On this page the user will be encouraged to sign up to become a user on the site
 - As a user, I want to ...
 
 
-### User Requirements and Expectations
+## User Requirements and Expectations
 
 ### Site Owner/Administrator
 
 #### Requirements
 
-For the Site Owner/Administrator's purposes I will require the site to collect and store data from user posts, such as text, date, username, and special key data. The text will be the users tips or 'lyfehax' as I will be naming them. The date will only include the date in the format: DD/MM/YYYY. No time will be included. The username will be that which the user chose as an identity for posting on the site. The special key will be assigned to the individual users so that they, and their previous contributions and actions on the site, can be tracked and identified quickly in the database. 
-
-I want user posts to appear in the middle of the page with a margin on each side for medium sized screens upwards. The posts will take up the full screen on small screens and mobile devices. The posts will be scrollable with the newest posts appearing at the top and the oldest appearing at the bottom.
+The Site Owner/Administrator will require the site to collect and store data from user posts, such as text, date, username, and special key data. The text will be the users 'hax'. The posts include the date in the format: DD/MM/YYYY. The username will be the users identity for posting on the site. A special key will be assigned to the individual users so that they, and their previous contributions and actions on the site, can be tracked and identified quickly in the database. 
 
 #### Expectations
 
-I expect the site to load correctly without visual errors. This means having all images, fonts and formats loading without overflowing or clashing with other sections of the page. I want the posts of users to be clearly distinguishable between each other with margins and borders marking where one post ends and the next begins. I want the username and date of posting to appear in the appropriate location on every post, with username in top left and date in top right, and to be of legible size on all screen widths. 
+The Site Owner/Administrator will expect the site to load correctly without visual errors. This means having all images, fonts and formats loading without overflowing or clashing with other sections of the page. The posts of users must be clearly distinguishable between each other with margins and borders marking where one post ends and the next begins. I want the username and date of posting to appear in the appropriate location on every post, with username in top left and date in top right, and to be of legible size on all screen widths. 
 
-I expect the site to scale appropriately on all screen widths and utilise the BOOTSTRAP grid effectively. I want the colours and images to be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
+The site must scale appropriately on all screen widths and utilise the BOOTSTRAP grid effectively. The colours and images must be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
 
 ### Average User
 
 #### Requirements
 
-I require the site to allow me to make a membership account and post onto the main page for other users to see. I also need the site to allow me to easily navigate around it. I need to be able to see other users posts with key identifiers such as usernames and dates posted. I need the site to scale appropriately for my large and small devices so that usability or appearance isn't affected when switching between them. 
+They will require the site to allow them to make a membership account and post onto the main page for other users to see. They also need the site to allow them to easily navigate around it. They need to be able to see other users posts with key identifiers such as usernames and dates posted. They need the site to scale appropriately for their large and small devices so that usability or appearance isn't affected when switching between them. 
 
 #### Expectations
 
-I expect the navigation elements to be similiar to what I have seen on other sites, so I can easily jump in without having to learn specific UI quirks. I want the navbar to be sticky so that I can always click on the site logo to bring me back to the home page. For mobile devices and small screens I want the nav elements to merge into a burger icon which produces a menu transition when tapped. I want all the text and posts to be styled and ordered well.
+They will expect the navigation elements to be similiar to what they have seen on other sites (established norms), so they can easily jump in without having to learn specific UI quirks. They will want the navbar to be sticky so that they can always click on the site logo and other navbar elements to bring them wherever they want to go. For mobile devices and small screens, they will expect the nav elements to merge into a burger icon which produces a menu transition when tapped, so as not to crowd the screen. They will want all the text and posts to be styled and ordered well.
 
 ### Design Choices
 
