@@ -33,10 +33,34 @@ a:hover {
     transition: 100ms;
 }
 
+i {
+    color: #ccc;
+    font-size: 3rem;
+}
+.row {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .navbar-brand {
     font-size: 3rem;
 }
 
+.navbar {
+    background-color: #222222;
+    border: 1px solid #ccc;
+}
+
+.form-control {
+    color: #000000;
+    background-color: #ccc;
+    margin: 1rem auto;
+}
+
+.btn {
+    color: #000000;
+    font-size: 1.5rem;
+    background-color: #ccc;
+}
 .hero-images {
     margin-top: 2rem;
     --bs-gutter-x: 0;
@@ -45,4 +69,9 @@ a:hover {
 .col-6 img {
     height: 35rem;
     width: 100%;
+}
+
+#social-network-icons {
+    text-align: center;
+    margin-top: 7rem;
 }
