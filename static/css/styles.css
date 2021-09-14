@@ -50,25 +50,49 @@ i {
     border: 1px solid #ccc;
 }
 
+/* .form-group {
+    font-size: 2rem;
+} */
+
 .form-control {
     color: #000000;
     background-color: #ccc;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
+}
+
+.form-help {
+    font-size: 1rem;
 }
 
 .btn {
     color: #000000;
     font-size: 1.5rem;
     background-color: #ccc;
+    margin-top: 2rem;
 }
 .hero-images {
     margin-top: 2rem;
     --bs-gutter-x: 0;
 }
 
+.rounded-images {
+    border-radius: 2rem;
+    width: 100%;
+    height: 100%;
+    margin-top: 2rem;
+}
+
 .col-6 img {
     height: 35rem;
     width: 100%;
+}
+
+#legoman-img{
+    margin-top: -2rem;
+}
+
+#contact-form{
+    margin-top: 1.5rem;
 }
 
 #social-network-icons {
