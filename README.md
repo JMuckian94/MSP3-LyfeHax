@@ -125,7 +125,7 @@ I used [Coolers](https://coolors.co/) to create this neat palette image. Detail 
 
 #### Structure
 
-The structure is controlled using [Bootstrap v5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/). This grid system allowed me to set responsive html5 elements without the need to write media queries for each screen width breakpoint. I have written css styles for the various elements on the site and tweaked the positioning of certain elements within the row/column structure. For smaller screens I hide certain elements, such as hero images, so as not to crowd the page for the user.
+The structure is controlled using [Bootstrap v5.1.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/). This grid system allowed me to set responsive html5 elements without the need to write media queries for each screen width breakpoint. I have written css styles for the various elements on the site and tweaked the positioning of certain elements within the row/column structure. For smaller screens I hide certain elements, such as hero images, so as not to crowd the page for the user.
 
 ## Wireframes
 
@@ -156,7 +156,7 @@ Here are the links to my wireframes:
 
 ### Framworks & External Liberaries
 
-- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [Bootstrap 5.1.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [Django]()
