@@ -2,7 +2,6 @@ body {
     font-size: 2rem;
     background-color: #222222;
     color: #ccc;
-    /* font-family:; */
 }
 
 p {
@@ -37,6 +36,11 @@ i {
     color: #ccc;
     font-size: 3rem;
 }
+
+img {
+    max-height: 32rem;
+}
+
 .row {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -49,10 +53,6 @@ i {
     background-color: #222222;
     border: 1px solid #ccc;
 }
-
-/* .form-group {
-    font-size: 2rem;
-} */
 
 .form-control {
     color: #000000;
@@ -70,11 +70,15 @@ i {
     background-color: #ccc;
     margin-top: 2rem;
 }
+
 .hero-images {
     margin-top: 2rem;
     --bs-gutter-x: 0;
 }
 
+.carousel-item {
+    transition: transform 2s ease-in-out;
+}
 .rounded-images {
     border-radius: 2rem;
     width: 100%;

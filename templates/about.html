@@ -1,16 +1,6 @@
-{% extends "base.html" %}
-{% set active_page = "about" %}
+{% extends 'layout/base.html' %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row hero-images">
-        <div class="col-6">
-        <img src="static/img/cesar-carlevarino-aragon-NL_DF0Klepc-unsplash.jpg" alt="Tool Collection">
-        </div>
-        <div class="col-6">
-            <img src="static/img/jasmin-schreiber-JE4iHJE-knI-unsplash.jpg" alt="Arts and Crafts">
-        </div>
-    </div>
-</div>
+{% include 'components/hero-image.html' %}
 <div class="container">
     <div class="row">
         <div class="col-6">
