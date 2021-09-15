@@ -62,16 +62,21 @@ This page will have a contact form to fill out for anyone who wants to contact t
 
 The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax.ie became a recognisable brand and needed a social media footprint like most modern companies.
 
+### Admin Page
+
+
+
 ## User Stories
 
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
-- As a user, I want to ...
+- As a user, I want to be able to navigate the page using a screen reader with all page elements labelled appropriately
+- As a user, I want all of the content to be of appropriate size on all screens with no overflow
+- As a user, I want to be able to view the posts of website members and navigate through them intuatively
+- As a user, I want to be able to join as a member and begin posting my own content
+- As a user, I want the site to provide visual feedback as I navigate around and interact with visible elements
+- As a user, I want the website to store my membership credentials securely in a database
+- As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
+- As a user, I as a member, want to be able to edit and delete posts as well as submit posts
+- As a user, I as an admin, want to be able to delete any users posts should they breach community guidelines
 
 
 ## User Requirements and Expectations
@@ -98,27 +103,29 @@ They will require the site to allow them to make a membership account and post o
 
 They will expect the navigation elements to be similiar to what they have seen on other sites (established norms), so they can easily jump in without having to learn specific UI quirks. They will want the navbar to be sticky so that they can always click on the site logo and other navbar elements to bring them wherever they want to go. For mobile devices and small screens, they will expect the nav elements to merge into a burger icon which produces a menu transition when tapped, so as not to crowd the screen. They will want all the text and posts to be styled and ordered well.
 
-### Design Choices
-
-For small screens I have gone with a sticky navbar with the site logo and burger icon visible. Clicking on the logo will take the user back to the top and refresh the page. The burger will produce a menu of navigation options with pages such as "about", "contact us", and "...". The posts on mobile and small screens will be minimised to a preview of the content with the title of the post and the first couple of lines visible with a "Read more..." item that will make the post full screen and the rest of the text visible.
-
-Each post will have clear border markings to seperate them from each other. Usernames will be positioned top left and date top right of each post.
+### Visual Design Choices
 
 #### Fonts
 
-...
+For fonts I went with [Urbanist](https://fonts.google.com/specimen/Urbanist#standard-styles), which is a low-contrast, geometric sans-serif inspired by Modernist typography and design. It was created using elementary shapesand its neutrality makes it a versatile display font for print and digital mediums. I went for the font weight of 500.
 
 #### Icons
 
-...
+I am using icons from Font [Awesome's](https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free) free gallery. These icons include the recognisable icons used for popular social media platforms.
 
 #### Colors
 
-...
+I used [Coolers](https://coolors.co/) to create this neat palette image. Detail on the use of of each color below.
+
+- #222 Eerie Black: This will be the primary base color for the whole site; all other colors will be layered over it
+- #ccc Light Grey: This will be used to color all text elements and form fields; text within form fields will inherit the #222 base color
+- #
+- #
+- #
 
 #### Structure
 
-...
+The structure is controlled using [Bootstrap v5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/). This grid system allowed me to set responsive html5 elements without the need to write media queries for each screen width breakpoint. I have written css styles for the various elements on the site and tweaked the positioning of certain elements within the row/column structure. For smaller screens I hide certain elements, such as hero images, so as not to crowd the page for the user.
 
 ## Wireframes
 
@@ -136,18 +143,6 @@ Here are the links to my wireframes:
 
 ...
 
-### Lets Play/High Scores Buttons
-
-...
-
-### Game Section
-
-...
-
-### Final Scores Section
-
-...
-
 ## Features to be Implemented
 
 ...
@@ -161,9 +156,11 @@ Here are the links to my wireframes:
 
 ### Framworks & External Liberaries
 
-- [Bootstrap 4.6.0](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
+- [Django]()
+- [Flask]()
 
 ### Tools
 
@@ -172,6 +169,7 @@ Here are the links to my wireframes:
 - [Balsamiq](https://balsamiq.com/)
 - [Coolors](https://coolors.co/)
 - [Heroku](https://dashboard.heroku.com/)
+- [MongoDB]()
 
 ## Testing of Interactive Elements
 
