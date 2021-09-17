@@ -1,11 +1,11 @@
 {% extends "layout/base.html" %}
 {% block content %}
+{% include 'components/navigation/nav.html %}
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Become a LyfeHaxer!</h1>
-            <p>Join our community and provide your own hax to others around the world!</p>
+            <h1>Login</h1>
         </div>
     </div>
     <div class="row">
@@ -13,7 +13,7 @@
             <img id="legoman-img" class="rounded-images" src="static/img/ken-suarez-4IxPVkFGJGI-unsplash.jpg" alt="Keyboard Legoman" style="height: 30rem;">
         </div>
         <div class="col-md-5 d-flex justify-content-center">
-            <form action>
+            <form>
                 <div class="form-group">
                     <label for="inputPassword4">Username</label>
                     <input type="username" class="form-control" id="inputUsername4" placeholder="Username" />
@@ -23,7 +23,6 @@
                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
                 </div>
                 <button type="submit" class="btn">
-                    Become a member!
                 </button>
             </form>
         </div>
