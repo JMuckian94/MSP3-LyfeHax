@@ -1,36 +1,67 @@
 import os
-from flask import Flask, render_template
-# from flask_pymongo import PyMongo
-# from bson.objectid import ObjectId
-# if os.path.exists("env.py"):
-#     import env
+from flask import (Flask, render_template, redirect, request, url_for, session,
+                   flash)
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
+if os.path.exists("env.py"):
+    import env
 
 
 app = Flask(__name__)
 
-# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-# app.secret_key = os.environ.get("SECRET_KEY")
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
 
 
 @app.route("/")
 def index():
+    """
+
+    """
     return render_template("index.html")
 
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    """
+    Allows user to register for an account
+    Checks if a username is already in use
+    Forwards user onto their new member dashboard
+    """
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already in use")
+            return redirect(url_for("signup"))
+
+        username = request.form.get("username").lower()
+        password = generate_password_hash(request.form.get("password"))
+
+        mongo.db.users.insert_one({
+            'username': username,
+            'password': password})
+
+        if mongo.db.users.find_one({'username': username}) is not None:
+            user = mongo.db.users.find_one({'username': username})
+            user_id = user['_id']
+            session['user_id'] = str(user_id)
+            hax = mongo.db.hax.find({"user_id": user_id})
+            count_hax = hax.count()
+            return redirect(url_for("blank_dashboard", user_id=user_id,
+                                    count_hax=count_hax))
+
+    return render_template("pages/authentication.html", register="True")
 
 
-@app.route("/member")
+@app.route("/login")
 def member():
-    return render_template("member.html")
-
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
