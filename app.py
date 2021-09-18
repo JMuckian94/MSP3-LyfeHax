@@ -60,8 +60,47 @@ def signup():
 
 
 @app.route("/login")
-def member():
-    return render_template("login.html")
+def login():
+    """
+    Allows the user to login if they have an account
+    Redirects to member dashboard
+    """
+    if request.method == "POST":
+        user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if user:
+            if check_password_hash(user["password"],
+               request.form.get("password")):
+                user_id = str(user['_id'])
+                session['user_id'] = str(user_id)
+
+                user_hax = mongo.db.hax.find_one({"user_id":user_id})
+
+                if user_hax:
+                    hax_id = user_hax["_id"]
+                    hax = mongo.db.hax.find({"user.id": user_id})
+                    count_hax = hax.count()
+                    return redirect(url_for("view_dashboard",
+                                            user_id=user_id, hax_id=hax_id,
+                                            count_hax=count_hax))
+
+                else:
+                    hax = mongo.db.hax.find({"user_id": user_id})
+                    count_hax = hax.count()
+                    return redirect(url_for("blank_dashboard",
+                                            user_id=user_id,
+                                            count_hax=count_hax))
+
+            else:
+                flash("Incorrect Username and/or password")
+                return redirect(url_for("login"))
+
+        else:
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("pages/authentication.html")
 
 
 @app.errorhandler(404)
