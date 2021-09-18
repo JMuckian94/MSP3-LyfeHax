@@ -75,7 +75,7 @@ def login():
                 user_id = str(user['_id'])
                 session['user_id'] = str(user_id)
 
-                user_hax = mongo.db.hax.find_one({"user_id":user_id})
+                user_hax = mongo.db.hax.find_one({"user_id": user_id})
 
                 if user_hax:
                     hax_id = user_hax["_id"]
@@ -101,6 +101,27 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("pages/authentication.html")
+
+
+@app.route('/logout')
+def logout():
+    """
+    Allows the user to log out
+    Takes them back to the home page
+    """
+    session.clear()
+    return render_template("pages/home.html")
+
+
+@app.route('/dashboard/<user_id>/<hax_id>', methods=["GET","POST"])
+def view_dashboard(user_id, hax_id):
+    """
+    When the user has posted at least one 'hax'
+    Dashboard will display any hax the user has posted previously
+    """
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    hax = mongo.db.hax.find({"user_id": user_id})
+    count_hax = hax.count()
 
 
 @app.errorhandler(404)
