@@ -129,12 +129,30 @@ def view_dashboard(user_id, hax_id):
     if session.get('user_id'):
         if session['user_id'] == str(user["_id"]):
             if request.method == 'POST':
-                selected_hax = request.form.get.('hax_title').lower()
-                hax_post = mongo.db.users.find_one({
-                                                        "hax_title": selected_hax,
-                                                        "user_id": user_id})
+                selected_hax = request.form.get('hax_title').lower()
+                hax_post = mongo.db.hax.find_one({
+                                            "hax_title": selected_hax,
+                                            "user_id": user_id})
                 hax_id = str(hax_post["_id"])
-                logs = mongo.db.logs.find({'hax_id': hax_id})
+                logs = mongo.db.logs.find({'hax_id': hax_id}).sort(
+                    'log_date', -1)
+                count_logs = logs.count()
+
+            else:
+                hax_post = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
+                hax_id = str(hax_post["_id"])
+                logs = mongo.db.logs.find({'hax_id': hax_id}).sort(
+                    'log_date', -1)
+                count_logs = logs.count()
+
+            return render_template("pages/dashboard.html",
+                                   user_id=user_id,
+                                   hax=hax,
+                                   logs=logs,
+                                   hax_id=hax_id,
+                                   hax_post=hax_post,
+                                   count_hax=count_hax,
+                                   count_logs=count_hax)
 
 
 @app.errorhandler(404)
