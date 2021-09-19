@@ -113,7 +113,7 @@ def logout():
     return render_template("pages/home.html")
 
 
-@app.route('/dashboard/<user_id>/<hax_id>', methods=["GET","POST"])
+@app.route('/dashboard/<user_id>/<hax_id>', methods=["GET", "POST"])
 def view_dashboard(user_id, hax_id):
     """
     When the user has posted at least one 'hax'
@@ -122,6 +122,19 @@ def view_dashboard(user_id, hax_id):
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     hax = mongo.db.hax.find({"user_id": user_id})
     count_hax = hax.count()
+
+    if user is None:
+        return redirect(url_for('login'))
+
+    if session.get('user_id'):
+        if session['user_id'] == str(user["_id"]):
+            if request.method == 'POST':
+                selected_hax = request.form.get.('hax_title').lower()
+                hax_post = mongo.db.users.find_one({
+                                                        "hax_title": selected_hax,
+                                                        "user_id": user_id})
+                hax_id = str(hax_post["_id"])
+                logs = mongo.db.logs.find({'hax_id': hax_id})
 
 
 @app.errorhandler(404)
