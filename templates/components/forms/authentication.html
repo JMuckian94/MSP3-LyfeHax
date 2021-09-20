@@ -2,21 +2,21 @@
 {% block content %}
 {% include 'components/navigation/nav.html' %}
 
-    {% if signup == True %}
+{% if signup == True %}
 
-    <div class="container" id ="signup">
-        <h2>Sign up and become part of the LyfeHax community!</h2>
-        {% include 'components/flash_messages/flash_messages.html' %}
-        {% include 'components/forms/authentication.html' %}
-    </div>
+<div class="container" id="signup">
+    <h1>Join the community and become a LyfeHaxer!</h1>
+    {% include 'components/flash_messages/flash_messages.html' %}
+    {% include 'components/forms/authentication.html' %}
+</div>
 
-    {% else %}
+{% else %}
 
-    <div class="container">
-        <h2>Login to your account here</h2>
-        {% include 'components/flash_messages/flash_messages.html' %}
-        {% include 'components/forms/authentication.html' %}
-    </div>
+<div class="container" id="login">
+    <h1>Login to your account here</h1>
+    {% include 'components/flash_messages/flash_messages.html' %}
+    {% include 'components/forms/authentication.html' %}
+</div>
 
-    {% endif %}
+{% endif %}
 {% endblock %}
