@@ -1,28 +1,50 @@
 {% if signup == True %}
 <form action="{{ url_for('signup') }}" method="POST">
-{% else %}
-<form action="{{ url_for('login')}}" method="POST">
-{% endif %}
-    <div class="row">
-        <div class="col-12 input-fields">
-            <label class="labels" for="username">Username</label>
-            {% if signup == True %}
+    {% else %}
+    <form action="{{ url_for('login')}}" method="POST">
+        {% endif %}
+        <div class="row">
+            <div class="col-12 input-fields">
+                <label class="labels" for="username">Username</label>
+                {% if signup == True %}
                 <span class="pattern">Please only use letters and numbers for username</span>
-            {% endif %}
-            <input id="username" type="text" name="username" class="fields" pattern="[a-zA-Z0-9]+" required title="Please only use letters and numbers for username">
-        </div>
-        <div class="col-12 input-fields">
-            <label class="labels" for="password">Password</label>
-            {% if signup == True %}
+                {% endif %}
+                <input id="username" type="text" name="username" class="fields" pattern="[a-zA-Z0-9]+" required
+                    title="Please only use letters and numbers for username">
+            </div>
+            <div class="col-12 input-fields">
+                <label class="labels" for="password">Password</label>
+                {% if signup == True %}
                 <span class="pattern">Password must be six characters or more</span>
-            {% endif %}
-            <input id="password" name="password" type="password" class="fields" required pattern=".{6,}" title="six characters or more">
+                {% endif %}
+                <input id="password" name="password" type="password" class="fields" required pattern=".{6,}"
+                    title="six characters or more">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="" name="action">
+                    {% if signup == True %} Sign up now! {% else %} Login! {% endif %}</button>
+            </div>
+            <div class="col-12">
+                {% if signup == True %}
+                <h3>Are you already a member?</h3>
+                {% else %}
+                <h3>You are not yet a member. Sign up!</h3>
+                {% endif %}
+                <div class="row">
+                    <div class="col-12">
+                        {% if signup == True %}
+                        <a href="{{ url_for('login') }}" class="">Login here</a>
+                        {% else %}
+                        <a href="{{ url_for('signup') }}" class="">Sign up now</a>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <a href=" url_for('index.html') }}" class="">Return home</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-12">
-            <button type="submit" class="form-buttons" name="action">
-                {% if signup == True %} Sign up now! {% else %} Login! {% endif %}</button>
-        </div>
-    </div>    
+    </form>
 
 
 
