@@ -4,6 +4,7 @@ from flask import (Flask, render_template, redirect, request, url_for, session,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import date
 if os.path.exists("env.py"):
     import env
 
@@ -147,25 +148,40 @@ def view_dashboard(user_id, hax_id):
                                             "hax_title": selected_hax,
                                             "user_id": user_id})
                 hax_id = str(hax_post["_id"])
-                logs = mongo.db.logs.find({'hax_id': hax_id}).sort(
-                    'log_date', -1)
-                count_logs = logs.count()
 
             else:
                 hax_post = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
                 hax_id = str(hax_post["_id"])
-                logs = mongo.db.logs.find({'hax_id': hax_id}).sort(
-                    'log_date', -1)
-                count_logs = logs.count()
 
             return render_template("pages/dashboard.html",
                                    user_id=user_id,
                                    hax=hax,
-                                   logs=logs,
                                    hax_id=hax_id,
                                    hax_post=hax_post,
-                                   count_hax=count_hax,
-                                   count_logs=count_hax)
+                                   count_hax=count_hax)
+
+
+@app.route('/hax/add/<user_id>', methods=['GET', 'POST'])
+def add_hax(user_id):
+    """
+    Allows the user to post a 'hax' post
+    """
+    hax = mongo.db.dogs.find({"user_id": user_id})
+    hax_content = {
+        'user_id': request.form.get('user_id'),
+        'hax_title': request.form.get('hax_title').lower(),
+        'date_posted': date,
+        'hax-body': request.form.get('hax_body'),
+    }
+    mongo.db.hax.insert_one(hax_content)
+    hax_content = mongo.db.hax.find_one({
+        "hax_title": request.form.get('hax_title').lower(),
+        "user_id": request.form.get('user_id')})
+    hax_id = hax_content["_id"]
+    count_hax = hax.count()
+    return redirect(url_for("view_dashboard",
+                            user_id=user_id, hax_id=hax_id,
+                            count_hax=count_hax))
 
 
 @app.errorhandler(404)
