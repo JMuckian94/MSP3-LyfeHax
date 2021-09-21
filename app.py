@@ -113,6 +113,19 @@ def logout():
     return render_template("pages/home.html")
 
 
+@app.route('/dashboard/<user_id>')
+def blank_dashboard(user_id):
+    """
+    When the user has a new account or has not posted anything yet
+    It will display a blank user profile dashboard
+    """
+    hax = mongo.db.hax.find_one({"user_id": user_id})
+    count_hax = hax.count()
+    return render_template("pages/dashboard.html",
+                           user_id=user_id,
+                           count_hax=count_hax)
+
+
 @app.route('/dashboard/<user_id>/<hax_id>', methods=["GET", "POST"])
 def view_dashboard(user_id, hax_id):
     """
