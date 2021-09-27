@@ -4,9 +4,6 @@
 
 To create a life hacks quick tips website where users can share their tips and tricks with other web users. They will be able to create a basic account which will allow them to post content. Content will just be text for now. Once the user posts their content to the page the post will be assigned the username of the content creator and will also have the date it was posted.
 
-## Table of Contents
-...
-
 ## Website Design Goals
 
 - Design a front end for a data-driven web application that meets accessibility guidelines, follows the principles of UX design, meets its given purpose and provides a set of     user interactions
@@ -93,7 +90,7 @@ The Site Owner/Administrator will expect the site to load correctly without visu
 
 The site must scale appropriately on all screen widths and utilise the BOOTSTRAP grid effectively. The colours and images must be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
 
-### Average User
+### Standard User
 
 #### Requirements
 
@@ -131,11 +128,11 @@ The structure is controlled using [Bootstrap v5.1.1](https://getbootstrap.com/do
 
 Here are the links to my wireframes:
 
-### [Desktop Wireframe Folder]()
+### [Desktop Wireframe Folder](wireframes/desktop)
 
-### [Tablet Wireframe Folder]()
+### [Tablet Wireframe Folder](wireframes/mobile)
 
-### [Mobile Wireframe Folder]()
+### [Mobile Wireframe Folder](wireframes/tablet)
 
 ## Features
 
