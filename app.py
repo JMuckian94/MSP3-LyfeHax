@@ -4,7 +4,6 @@ from flask import (Flask, render_template, redirect, request, url_for, session,
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import date
 if os.path.exists("env.py"):
     import env
 
@@ -21,9 +20,9 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     """
-
+    Returns user to the landing page
     """
-    return render_template("index.html")
+    return render_template("pages/index.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -52,10 +51,7 @@ def signup():
             user = mongo.db.users.find_one({'username': username})
             user_id = user['_id']
             session['user_id'] = str(user_id)
-            hax = mongo.db.hax.find({"user_id": user_id})
-            count_hax = hax.count()
-            return redirect(url_for("blank_dashboard", user_id=user_id,
-                                    count_hax=count_hax))
+            return redirect(url_for("dashboard", user_id=user_id))
 
     return render_template("pages/authentication.html", register="True")
 
@@ -76,23 +72,6 @@ def login():
                 user_id = str(user['_id'])
                 session['user_id'] = str(user_id)
 
-                user_hax = mongo.db.hax.find_one({"user_id": user_id})
-
-                if user_hax:
-                    hax_id = user_hax["_id"]
-                    hax = mongo.db.hax.find({"user.id": user_id})
-                    count_hax = hax.count()
-                    return redirect(url_for("view_dashboard",
-                                            user_id=user_id, hax_id=hax_id,
-                                            count_hax=count_hax))
-
-                else:
-                    hax = mongo.db.hax.find({"user_id": user_id})
-                    count_hax = hax.count()
-                    return redirect(url_for("blank_dashboard",
-                                            user_id=user_id,
-                                            count_hax=count_hax))
-
             else:
                 flash("Incorrect Username and/or password")
                 return redirect(url_for("login"))
@@ -111,77 +90,16 @@ def logout():
     Takes them back to the home page
     """
     session.clear()
-    return render_template("pages/home.html")
+    return render_template("pages/index.html")
 
 
 @app.route('/dashboard/<user_id>')
-def blank_dashboard(user_id):
+def blank_dashboard():
     """
     When the user has a new account or has not posted anything yet
     It will display a blank user profile dashboard
     """
-    hax = mongo.db.hax.find_one({"user_id": user_id})
-    count_hax = hax.count()
-    return render_template("pages/dashboard.html",
-                           user_id=user_id,
-                           count_hax=count_hax)
-
-
-@app.route('/dashboard/<user_id>/<hax_id>', methods=["GET", "POST"])
-def view_dashboard(user_id, hax_id):
-    """
-    When the user has posted at least one 'hax'
-    Dashboard will display any hax the user has posted previously
-    """
-    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-    hax = mongo.db.hax.find({"user_id": user_id})
-    count_hax = hax.count()
-
-    if user is None:
-        return redirect(url_for('login'))
-
-    if session.get('user_id'):
-        if session['user_id'] == str(user["_id"]):
-            if request.method == 'POST':
-                selected_hax = request.form.get('hax_title').lower()
-                hax_post = mongo.db.hax.find_one({
-                                            "hax_title": selected_hax,
-                                            "user_id": user_id})
-                hax_id = str(hax_post["_id"])
-
-            else:
-                hax_post = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
-                hax_id = str(hax_post["_id"])
-
-            return render_template("pages/dashboard.html",
-                                   user_id=user_id,
-                                   hax=hax,
-                                   hax_id=hax_id,
-                                   hax_post=hax_post,
-                                   count_hax=count_hax)
-
-
-@app.route('/hax/add/<user_id>', methods=['GET', 'POST'])
-def add_hax(user_id):
-    """
-    Allows the user to post a 'hax' post
-    """
-    hax = mongo.db.dogs.find({"user_id": user_id})
-    hax_content = {
-        'user_id': request.form.get('user_id'),
-        'hax_title': request.form.get('hax_title').lower(),
-        'date_posted': date,
-        'hax-body': request.form.get('hax_body'),
-    }
-    mongo.db.hax.insert_one(hax_content)
-    hax_content = mongo.db.hax.find_one({
-        "hax_title": request.form.get('hax_title').lower(),
-        "user_id": request.form.get('user_id')})
-    hax_id = hax_content["_id"]
-    count_hax = hax.count()
-    return redirect(url_for("view_dashboard",
-                            user_id=user_id, hax_id=hax_id,
-                            count_hax=count_hax))
+    return render_template("pages/dashboard.html")
 
 
 @app.errorhandler(404)

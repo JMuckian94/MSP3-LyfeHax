@@ -1,7 +1,10 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
 {% if signup == True %}
 <form action="{{ url_for('signup') }}" method="POST">
     {% else %}
-    <form action="{{ url_for('login')}}" method="POST">
+    <form action="{{ url_for('login') }}" method="POST">
         {% endif %}
         <div class="row">
             <div class="col-12 input-fields">
@@ -39,14 +42,14 @@
                         {% endif %}
                     </div>
                     <div class="col">
-                        <a href=" url_for('index.html') }}" class="">Return home</a>
+                        <a href="{{ url_for('index.html') }}" class="">Return home</a>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 
-
+{% endblock %}
 
 
 
