@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Login</h1>
+            <h1>Already a LyfeHaxer?</h1>
+            <p>Log in!</p>
         </div>
     </div>
     <div class="row">
@@ -12,18 +13,7 @@
             <img id="legoman-img" class="rounded-images" src="static/img/ken-suarez-4IxPVkFGJGI-unsplash.jpg" alt="Keyboard Legoman" style="height: 30rem;">
         </div>
         <div class="col-md-5 d-flex justify-content-center">
-            <form>
-                <div class="form-group">
-                    <label for="inputPassword4">Username</label>
-                    <input type="username" class="form-control" id="inputUsername4" placeholder="Username" />
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
-                </div>
-                <button type="submit" class="btn">
-                </button>
-            </form>
+            {% include 'components/forms/authform.html' %}
         </div>
     </div>
 </div>

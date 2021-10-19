@@ -53,10 +53,10 @@ def signup():
             session['user_id'] = str(user_id)
             return redirect(url_for("dashboard", user_id=user_id))
 
-    return render_template("pages/authentication.html", register="True")
+    return render_template("pages/signup.html", register="True")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     """
     Allows the user to login if they have an account
@@ -80,7 +80,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("pages/authentication.html")
+    return render_template("pages/login.html")
 
 
 @app.route('/logout')

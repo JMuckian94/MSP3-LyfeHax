@@ -1,6 +1,3 @@
-{% extends 'layout/base.html' %}
-{% block content %}
-
 {% if signup == True %}
 <form action="{{ url_for('signup') }}" method="POST">
     {% else %}
@@ -29,9 +26,11 @@
             </div>
             <div class="col-12">
                 {% if signup == True %}
-                <h3>Are you already a member?</h3>
+                <h6>Are you already a member?</h6>
+
+                
                 {% else %}
-                <h3>You are not yet a member. Sign up!</h3>
+                <h6>You are not yet a member. Sign up!</h6>
                 {% endif %}
                 <div class="row">
                     <div class="col-12">
@@ -42,14 +41,12 @@
                         {% endif %}
                     </div>
                     <div class="col">
-                        <a href="{{ url_for('index.html') }}" class="">Return home</a>
+                        <a href="{{ url_for('index') }}" class="">Return home</a>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
-{% endblock %}
 
 
 
