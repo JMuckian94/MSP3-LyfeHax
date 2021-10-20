@@ -93,6 +93,14 @@ def logout():
     return render_template("pages/index.html")
 
 
+@app.route('/hax')
+def hax():
+    """
+    Takes user to the lifehacks page
+    """
+    return render_template("pages/hax.html")
+
+
 @app.route('/dashboard/<user_id>')
 def blank_dashboard():
     """
