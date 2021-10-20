@@ -18,11 +18,22 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/index")
 def index():
     """
     Returns user to the landing page
     """
     return render_template("pages/index.html")
+
+
+@app.route("/get_hax")
+def get_hax():
+    """
+    Takes user to the lifehacks page
+    Gets stored hax from the database
+    """
+    hax = mongo.db.hax.find()
+    return render_template("pages/hax.html", hax=hax)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -44,13 +55,13 @@ def signup():
         password = generate_password_hash(request.form.get("password"))
 
         mongo.db.users.insert_one({
-            'username': username,
-            'password': password})
+            "username": username,
+            "password": password})
 
-        if mongo.db.users.find_one({'username': username}) is not None:
-            user = mongo.db.users.find_one({'username': username})
-            user_id = user['_id']
-            session['user_id'] = str(user_id)
+        if mongo.db.users.find_one({"username": username}) is not None:
+            user = mongo.db.users.find_one({"username": username})
+            user_id = user["_id"]
+            session["user_id"] = str(user_id)
             return redirect(url_for("dashboard", user_id=user_id))
 
     return render_template("pages/signup.html", register="True")
@@ -69,8 +80,8 @@ def login():
         if user:
             if check_password_hash(user["password"],
                request.form.get("password")):
-                user_id = str(user['_id'])
-                session['user_id'] = str(user_id)
+                user_id = str(user["_id"])
+                session["user_id"] = str(user_id)
 
             else:
                 flash("Incorrect Username and/or password")
@@ -83,7 +94,7 @@ def login():
     return render_template("pages/login.html")
 
 
-@app.route('/logout')
+@app.route("/logout")
 def logout():
     """
     Allows the user to log out
@@ -93,15 +104,7 @@ def logout():
     return render_template("pages/index.html")
 
 
-@app.route('/hax')
-def hax():
-    """
-    Takes user to the lifehacks page
-    """
-    return render_template("pages/hax.html")
-
-
-@app.route('/dashboard/<user_id>')
+@app.route("/dashboard/<user_id>")
 def blank_dashboard():
     """
     When the user has a new account or has not posted anything yet
@@ -116,7 +119,7 @@ def page_not_found(error):
     Renders error.html with 404 message
     """
     error_message = str(error)
-    return render_template('pages/error.html',
+    return render_template("pages/error.html",
                            error_message=error_message), 404
 
 
@@ -126,11 +129,11 @@ def server_error(error):
     Renders error.html with 500 message.
     """
     error_message = str(error)
-    return render_template('pages/error.html',
+    return render_template("pages/error.html",
                            error_message=error_message), 500
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=os.environ.get("DEBUG"))
+            debug=True)
