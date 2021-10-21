@@ -3,17 +3,22 @@
     <div class="row">
         <div class="input-group">
             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-plus"></i></span>
-            <input placeholder="Username" name="username" type="text" class="form-control validate"
-                aria-label="login_form username input area" aria-describedby="login_form-password-input-area" required>
+            <input pattern="^[a-zA-Z0-9]{5,15}$" placeholder="Username" name="username" type="text"
+                class="form-control validate" aria-label="login_form username input area"
+                aria-describedby="login_form-password-input-area" required>
         </div>
     </div>
     <!-- password -->
     <div class="row">
         <div class="input-group">
             <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-redo"></i></i></span>
-            <input placeholder="Password" name="user_password" type="text" class="form-control validate"
-                aria-label="login_form password input area" aria-describedby="login_form-password-input-area" required>
+            <input pattern="^[a-zA-Z0-9]{5,15}$" placeholder="Password" name="user_password" type="text"
+                class="form-control validate" aria-label="login_form password input area"
+                aria-describedby="login_form-password-input-area" required>
         </div>
+        <small class="form-text form-help">
+            Please only use letters and numbers for your Username and Password
+        </small>
     </div>
     <!-- register -->
     <div class="row">

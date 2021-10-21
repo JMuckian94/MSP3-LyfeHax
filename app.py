@@ -57,7 +57,7 @@ def signup():
     Forwards user onto their new member profile
     """
     if "user" in session:
-        flash('You are already signed in')
+        flash('You are already signed in!')
         return redirect(url_for("index"))
 
     if request.method == "POST":
