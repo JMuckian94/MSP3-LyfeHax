@@ -1,54 +1,29 @@
-{% if signup == True %}
-<form action="{{ url_for('signup') }}" method="POST">
-    {% else %}
-    <form action="{{ url_for('login') }}" method="POST">
-        {% endif %}
+<form class="col" method="POST" action="{{ url_for('signup') }}">
+    <div class="card-panel">
+        <!-- username -->
         <div class="row">
-            <div class="col-12 input-fields">
-                <label class="labels" for="username">Username</label>
-                {% if signup == True %}
-                <span class="pattern">Please only use letters and numbers for username</span>
-                {% endif %}
-                <input id="username" type="text" name="username" class="fields" pattern="[a-zA-Z0-9]+" required
-                    title="Please only use letters and numbers for username">
-            </div>
-            <div class="col-12 input-fields">
-                <label class="labels" for="password">Password</label>
-                {% if signup == True %}
-                <span class="pattern">Password must be six characters or more</span>
-                {% endif %}
-                <input id="password" name="password" type="password" class="fields" required pattern=".{6,}"
-                    title="six characters or more">
-            </div>
-            <div class="col-12">
-                <button type="submit" class="" name="action">
-                    {% if signup == True %} Sign up now! {% else %} Login! {% endif %}</button>
-            </div>
-            <div class="col-12">
-                {% if signup == True %}
-                <h6>Are you already a member?</h6>
-
-                
-                {% else %}
-                <h6>You are not yet a member. Sign up!</h6>
-                {% endif %}
-                <div class="row">
-                    <div class="col-12">
-                        {% if signup == True %}
-                        <a href="{{ url_for('login') }}" class="">Login here</a>
-                        {% else %}
-                        <a href="{{ url_for('signup') }}" class="">Sign up now</a>
-                        {% endif %}
-                    </div>
-                    <div class="col">
-                        <a href="{{ url_for('index') }}" class="">Return home</a>
-                    </div>
-                </div>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-plus"></i></span>
+                <input placeholder="Username" name=username type="text" class="form-control validate" aria-label="authform username input area"
+                    aria-describedby="inputGroup-sizing-lg">
             </div>
         </div>
-    </form>
-
-
+        <!-- password -->
+        <div class="row">
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-lock"></i></i></span>
+                <input placeholder="Password" name=password type="text" class="form-control validate" aria-label="authform password input area"
+                    aria-describedby="inputGroup-sizing-lg">
+            </div>
+        </div>
+        <!-- register -->
+        <div class="row">
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Become a member!
+            </button>
+        </div>
+    </div>
+</form>
 
 
 

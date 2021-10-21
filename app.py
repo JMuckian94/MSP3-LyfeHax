@@ -1,3 +1,4 @@
+""" Imports operating system """
 import os
 from flask import (Flask, render_template, redirect, request, url_for, session,
                    flash)
@@ -47,12 +48,13 @@ def get_hax():
 # User authentication
 
 
+# Sign Up
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     """
     Allows user to register for an account
     Checks if a username is already in use
-    Forwards user onto their new member dashboard
+    Forwards user onto their new member profile
     """
     if "user" in session:
         flash('You are already signed in')
@@ -67,60 +69,83 @@ def signup():
                 flash(f"{form['username']} already exists!")
                 return redirect(url_for("signup"))
             # If user doesn't exist register the new user
-            else:
-                # Hash password
-                hash_pass = generate_password_hash(form['user_password'])
-                # Create new user with hashed password
-                user_collection.insert_one(
-                    {
-                        "username": form['username'],
-                        "email": form["email"],
-                        "password": hash_pass
-                    }
-                )
-                # Check if the user has been saved to db
-                user_in_db = user_collection.find_one(
-                    {"username": form["username"]})
-                if user_in_db:
-                    # Add user to session (Log in)
-                    session["user"] = user_in_db["username"]
-                    return redirect(url_for(
-                        "dashboard", user=user_in_db["username"]))
-                else:
-                    flash("There was a problem. Please try again.")
-                    return redirect(url_for("signup"))
-        else:
-            flash("Passwords must match!")
+
+            # Hash password
+            hash_pass = generate_password_hash(form['user_password'])
+            # Create new user with hashed password
+            user_collection.insert_one(
+                {
+                    "username": form['username'],
+                    "email": form["email"],
+                    "password": hash_pass
+                }
+            )
+            # Check if the user has been saved to db
+            user_in_db = user_collection.find_one(
+                {"username": form["username"]})
+            if user_in_db:
+                # Add user to session (Log in)
+                session["user"] = user_in_db["username"]
+                return redirect(url_for(
+                    "profile", user=user_in_db["username"]))
+
+            flash("There was a problem. Please try again.")
             return redirect(url_for("signup"))
 
-    return render_template("signup")
+        flash("Passwords must match!")
+        return redirect(url_for("signup"))
+
+    return render_template("pages/signup.html")
 
 
+# Login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """
     Allows the user to login if they have an account
-    Redirects to member dashboard
+    Redirects to member profile
     """
-    if request.method == "POST":
-        user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    if "user" in session:
+        user_in_db = user_collection.find_one({"username": session["user"]})
+        if user_in_db:
+            # If they are, redirect to user profile
+            flash("You are already logged in!")
+            return redirect(url_for("profile", user=user_in_db["username"]))
 
-        if user:
-            if check_password_hash(user["password"],
-               request.form.get("password")):
-                user_id = str(user["_id"])
-                session["user_id"] = str(user_id)
+    # Load the login page for the user
+    return render_template("pages/login.html")
 
-            else:
-                flash("Incorrect Username and/or password")
-                return redirect(url_for("login"))
+
+@app.route("/user_auth", methods=["POST"])
+def user_auth():
+    """
+    Authenticates the user for log in
+    """
+    form = request.form.to_dict()
+    user_in_db = user_collection.find_one({"username": form["username"]})
+    # Checks if the user is in db
+    if user_in_db:
+        # If passwords match (hashed / real)
+        if check_password_hash(
+            (user_in_db["password"]),
+                form["user_password"]):
+            # Log in the user
+            session["user"] = form["username"]
+            # If user is admin redirect to admin page
+            if session["user"] == "admin":
+                return redirect(url_for("admin"))
+
+            flash("You are now logged in!")
+            return redirect(url_for(
+                "profile", user=user_in_db["username"]))
 
         else:
-            flash("Incorrect Username and/or Password")
+            flash("Wrong username and/or password")
             return redirect(url_for("login"))
 
-    return render_template("pages/login.html")
+    else:
+        flash("You must be registered first before you can log in.")
+        return redirect(url_for("pages/signup"))
 
 
 @app.route("/logout")
@@ -133,13 +158,18 @@ def logout():
     return render_template("pages/index.html")
 
 
-@app.route("/dashboard/<user_id>")
-def blank_dashboard():
+@app.route("/profile/<user>")
+def profile(user):
     """
-    When the user has a new account or has not posted anything yet
-    It will display a blank user profile dashboard
+    User Profile
     """
-    return render_template("pages/dashboard.html")
+    if "user" in session:
+        # If so get user and pass to template
+        user_in_db = user_collection.find_one({"username": user})
+        return render_template("profile.html", user=user_in_db)
+    else:
+        flash("You must be logged in first!")
+        return redirect(url_for("index"))
 
 
 @app.errorhandler(404)

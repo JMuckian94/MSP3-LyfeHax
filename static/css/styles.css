@@ -38,7 +38,7 @@ a:hover {
 }
 
 i {
-    color: #ccc;
+    color: #111;
     font-size: 3rem;
 }
 
@@ -60,9 +60,7 @@ img {
 }
 
 .form-control {
-    color: #000000;
-    background-color: #ccc;
-    margin: 0.5rem auto;
+    color: #111;
 }
 
 .form-help {
@@ -70,10 +68,9 @@ img {
 }
 
 .btn {
-    color: #000000;
+    color: #000;
     font-size: 1.5rem;
-    background-color: #ccc;
-    margin-top: 2rem;
+    background-color: #ddd;
 }
 
 .hero-images {
