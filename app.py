@@ -7,14 +7,23 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
+# App config
 
 app = Flask(__name__)
+
+# MongoDB config
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+# Collections
+
+category_collection = mongo.db.categories
+hax_collection = mongo.db.hax
+user_collection = mongo.db.users
 
 
 @app.route("/")
@@ -35,6 +44,8 @@ def get_hax():
     hax = mongo.db.hax.find()
     return render_template("pages/hax.html", hax=hax)
 
+# User authentication
+
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -43,28 +54,46 @@ def signup():
     Checks if a username is already in use
     Forwards user onto their new member dashboard
     """
+    if "user" in session:
+        flash('You are already signed in')
+        return redirect(url_for("index"))
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username already in use")
+        form = request.form.to_dict()
+        # Checks if password and password1 match
+        if form["user_password"] == form["user_password1"]:
+            # If they do it will try to find user in db
+            user = user_collection.find_one({"username": form["username"]})
+            if user:
+                flash(f"{form['username']} already exists!")
+                return redirect(url_for("signup"))
+            # If user doesn't exist register the new user
+            else:
+                # Hash password
+                hash_pass = generate_password_hash(form['user_password'])
+                # Create new user with hashed password
+                user_collection.insert_one(
+                    {
+                        "username": form['username'],
+                        "email": form["email"],
+                        "password": hash_pass
+                    }
+                )
+                # Check if the user has been saved to db
+                user_in_db = user_collection.find_one(
+                    {"username": form["username"]})
+                if user_in_db:
+                    # Add user to session (Log in)
+                    session["user"] = user_in_db["username"]
+                    return redirect(url_for(
+                        "dashboard", user=user_in_db["username"]))
+                else:
+                    flash("There was a problem. Please try again.")
+                    return redirect(url_for("signup"))
+        else:
+            flash("Passwords must match!")
             return redirect(url_for("signup"))
 
-        username = request.form.get("username").lower()
-        password = generate_password_hash(request.form.get("password"))
-
-        mongo.db.users.insert_one({
-            "username": username,
-            "password": password})
-
-        if mongo.db.users.find_one({"username": username}) is not None:
-            user = mongo.db.users.find_one({"username": username})
-            user_id = user["_id"]
-            session["user_id"] = str(user_id)
-            return redirect(url_for("dashboard", user_id=user_id))
-
-    return render_template("pages/signup.html", register="True")
+    return render_template("signup")
 
 
 @app.route("/login", methods=["GET", "POST"])
