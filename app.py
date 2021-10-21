@@ -59,8 +59,10 @@ def signup():
     if "user" in session:
         flash('You are already signed in')
         return redirect(url_for("index"))
+
     if request.method == "POST":
         form = request.form.to_dict()
+
         # Checks if password and password1 match
         if form["user_password"] == form["user_password1"]:
             # If they do it will try to find user in db
@@ -69,25 +71,23 @@ def signup():
                 flash(f"{form['username']} already exists!")
                 return redirect(url_for("signup"))
             # If user doesn't exist register the new user
-
             # Hash password
             hash_pass = generate_password_hash(form['user_password'])
             # Create new user with hashed password
             user_collection.insert_one(
                 {
                     "username": form['username'],
-                    "email": form["email"],
                     "password": hash_pass
                 }
             )
             # Check if the user has been saved to db
-            user_in_db = user_collection.find_one(
+            existing_user = user_collection.find_one(
                 {"username": form["username"]})
-            if user_in_db:
+            if existing_user:
                 # Add user to session (Log in)
-                session["user"] = user_in_db["username"]
+                session["user"] = existing_user["username"]
                 return redirect(url_for(
-                    "profile", user=user_in_db["username"]))
+                    "profile", user=existing_user["username"]))
 
             flash("There was a problem. Please try again.")
             return redirect(url_for("signup"))
@@ -106,11 +106,11 @@ def login():
     Redirects to member profile
     """
     if "user" in session:
-        user_in_db = user_collection.find_one({"username": session["user"]})
-        if user_in_db:
+        existing_user = user_collection.find_one({"username": session["user"]})
+        if existing_user:
             # If they are, redirect to user profile
             flash("You are already logged in!")
-            return redirect(url_for("profile", user=user_in_db["username"]))
+            return redirect(url_for("profile", user=existing_user["username"]))
 
     # Load the login page for the user
     return render_template("pages/login.html")
@@ -122,12 +122,12 @@ def user_auth():
     Authenticates the user for log in
     """
     form = request.form.to_dict()
-    user_in_db = user_collection.find_one({"username": form["username"]})
+    existing_user = user_collection.find_one({"username": form["username"]})
     # Checks if the user is in db
-    if user_in_db:
+    if existing_user:
         # If passwords match (hashed / real)
         if check_password_hash(
-            (user_in_db["password"]),
+            (existing_user["password"]),
                 form["user_password"]):
             # Log in the user
             session["user"] = form["username"]
@@ -137,7 +137,7 @@ def user_auth():
 
             flash("You are now logged in!")
             return redirect(url_for(
-                "profile", user=user_in_db["username"]))
+                "profile", user=existing_user["username"]))
 
         else:
             flash("Wrong username and/or password")
@@ -155,6 +155,7 @@ def logout():
     Takes them back to the home page
     """
     session.clear()
+    flash("You are now logged out!")
     return render_template("pages/index.html")
 
 
@@ -165,11 +166,11 @@ def profile(user):
     """
     if "user" in session:
         # If so get user and pass to template
-        user_in_db = user_collection.find_one({"username": user})
-        return render_template("profile.html", user=user_in_db)
-    else:
-        flash("You must be logged in first!")
-        return redirect(url_for("index"))
+        existing_user = user_collection.find_one({"username": user})
+        return render_template("pages/profile.html", user=existing_user)
+
+    flash("You must be logged in first!")
+    return redirect(url_for("index"))
 
 
 @app.errorhandler(404)

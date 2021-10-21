@@ -1,0 +1,24 @@
+<form class="col" method="POST" action="{{ url_for('signup') }}">
+    <!-- username -->
+    <div class="row">
+        <div class="input-group">
+            <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-user-plus"></i></span>
+            <input placeholder="Username" name="username" type="text" class="form-control validate"
+                aria-label="login_form username input area" aria-describedby="login_form-password-input-area" required>
+        </div>
+    </div>
+    <!-- password -->
+    <div class="row">
+        <div class="input-group">
+            <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fas fa-redo"></i></i></span>
+            <input placeholder="Password" name="user_password" type="text" class="form-control validate"
+                aria-label="login_form password input area" aria-describedby="login_form-password-input-area" required>
+        </div>
+    </div>
+    <!-- register -->
+    <div class="row">
+        <button type="submit" class="btn">
+            Submit <i id="submit-btn" class="fas fa-sign-in-alt"></i>
+        </button>
+    </div>
+</form>
