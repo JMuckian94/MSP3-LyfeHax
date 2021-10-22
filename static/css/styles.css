@@ -76,11 +76,17 @@ img {
 }
 .navbar-brand {
     font-size: 3rem;
+    margin-left: 1rem;
 }
 
 .navbar {
     background-color: #222222;
     border: 1px solid #ccc;
+}
+
+.nav-item {
+    text-align: right;
+    margin-right: 1rem;
 }
 
 .form-control {

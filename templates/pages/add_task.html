@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="text-center"> Add Task <i class="fas fa-mouse"></i></h2>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1"><p>Hax Category</p></label>
+                <select class="form-control" id="exampleFormControlSelect1" required>
+                    
+                    <option readonly>Please select</option>
+                    <option>Home</option>
+                    <option>Work</option>
+                    <option>Travel</option>
+                    <option>Garden</option>
+                    <option>Parenting</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1"><p>Your Hax</p></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

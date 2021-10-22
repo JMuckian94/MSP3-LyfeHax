@@ -170,6 +170,10 @@ def profile(user):
     return redirect(url_for("index"))
 
 
+@app.route("/add_task")
+def add_task():
+    return render_template("pages/add_task.html")
+
 @app.errorhandler(404)
 def page_not_found(error):
     """
