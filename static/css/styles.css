@@ -122,6 +122,10 @@ img {
     width: 100%;
 }
 
+.submit-btn {
+    font-size: 1.5rem;
+}
+
 #legoman-img{
     margin-top: -2rem;
 }
@@ -135,12 +139,9 @@ img {
     margin-top: 7rem;
 }
 
-#submit-btn {
-    font-size: 1.5rem;
-}
-
 #flash-message h3 {
     background-color: #006e14;
     padding: 2rem;
     border-radius: 0.5rem;
 }
+

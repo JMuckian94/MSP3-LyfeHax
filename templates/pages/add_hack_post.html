@@ -3,15 +3,17 @@
 <div class="row">
     <div class="col-md-8 offset-md-2 card">
         <h2 class="text-center"> Add Hax <i class="fas fa-mouse"></i></h2>
-        <form method="POST" action="">
+        <form method="POST" action="{{ url_for('add_hack_post') }}">
+            <!-- hax post title -->
             <div class="form-group">
-                <label for="hax_heading">
+                <label for="hax_title">
                     <h4><i class="fas fa-book"></i> Title</h4>
                 </label>
-                <textarea class="form-control" name="hax_heading" id="hax_heading" minlength="5" maxlength="50"
+                <textarea class="form-control" name="hax_title" id="hax_title" minlength="5" maxlength="50"
                     placeholder="Between 5 and 50 characters" required></textarea>
             </div>
             <br>
+            <!-- category selector -->
             <div class="form-group">
                 <label for="category_name">
                     <p><i class="fas fa-folder"></i> Category</p>
@@ -24,13 +26,20 @@
                 </select>
             </div>
             <br>
+            <!-- main body of hax post-->
             <div class="form-group">
                 <label for="hax_text_body">
                     <p><i class="fas fa-pencil-alt"></i> Main Body</p>
                 </label>
                 <textarea class="form-control mb-4" name="hax_text_body" id="hax_text_body"
-                    placeholder="Between 30 and 300 characters" rows="5" minlength="30" maxlength="300"
+                    placeholder="Between 30 and 600 characters" rows="5" minlength="30" maxlength="600"
                     required></textarea>
+            </div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-large">ADD HAX <i class="fas fa-plus submit-btn"></i></button>
+                </div>
             </div>
         </form>
     </div>

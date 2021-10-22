@@ -1,5 +1,6 @@
 """ Imports operating system """
 import os
+import datetime
 from flask import (Flask, render_template, redirect, request, url_for, session,
                    flash)
 from flask_pymongo import PyMongo
@@ -40,7 +41,7 @@ def index():
 def get_hax():
     """
     Takes user to the lifehacks page
-    Gets stored hax from the database
+    Gets all stored hax from the database
     """
     hax = mongo.db.hax.find()
     return render_template("pages/hax.html", hax=hax)
@@ -170,10 +171,25 @@ def profile(user):
     return redirect(url_for("index"))
 
 
-@app.route("/add_task")
-def add_task():
+@app.route("/add_hack_post", methods=["GET", "POST"])
+def add_hack_post():
+    """
+    Allows user to create a hax post.
+    """
+    if request.method == "POST":
+        hack = {
+            "category_name": request.form.get("category_name"),
+            "hax_title": request.form.get("hax_title"),
+            "hax_text_body": request.form.get("hax_text_body"),
+            "post_date": datetime.date.today().strftime("%d, %m, %Y"),
+            "posted_by": session["user"]
+            }
+        mongo.db.hax.insert_one(hack)
+        flash("Hax Posted Successfully")
+        return redirect(url_for("get_hax"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("pages/add_task.html", categories=categories)
+    return render_template("pages/add_hack_post.html", categories=categories)
 
 
 @app.errorhandler(404)
