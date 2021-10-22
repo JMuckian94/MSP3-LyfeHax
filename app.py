@@ -174,6 +174,7 @@ def profile(user):
 def add_task():
     return render_template("pages/add_task.html")
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     """
