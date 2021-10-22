@@ -35,10 +35,11 @@
                     placeholder="Between 30 and 600 characters" rows="5" minlength="30" maxlength="600"
                     required></textarea>
             </div>
-            <!-- submit button -->
             <div class="row">
                 <div class="col-12">
+                    <!-- submit button -->
                     <button type="submit" class="btn btn-success">ADD HAX <i class="fas fa-plus submit-btn"></i></button>
+                    <a href="{{ url_for('get_hax') }}" class="btn btn-danger">CANCEL <i class="fas fa-times-circle right cancel-btn"></i></a>
                 </div>
             </div>
         </form>

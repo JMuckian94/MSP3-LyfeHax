@@ -197,8 +197,18 @@ def edit_hack(hax_id):
     """
     Allows user to edit their posted hax
     """
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "hax_title": request.form.get("hax_title"),
+            "hax_text_body": request.form.get("hax_text_body"),
+            "post_date": datetime.date.today().strftime("%d, %m, %Y"),
+            "posted_by": session["user"]
+            }
+        mongo.db.hax.update({"_id": ObjectId(hax_id)}, submit)
+        flash("Hax Updated Successfully")
+    
     hack = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
-
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "pages/edit_hack_post",
