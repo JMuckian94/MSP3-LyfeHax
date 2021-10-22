@@ -172,7 +172,8 @@ def profile(user):
 
 @app.route("/add_task")
 def add_task():
-    return render_template("pages/add_task.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("pages/add_task.html", categories=categories)
 
 
 @app.errorhandler(404)

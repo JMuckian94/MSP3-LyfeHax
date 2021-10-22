@@ -13,17 +13,14 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="hax_category" name="hax_category">
+                <label for="category_name">
                     <p><i class="fas fa-folder"></i> Category</p>
                 </label>
-                <select class="form-control" id="hax_category" required>
-
-                    <option readonly>Please select</option>
-                    <option>Home</option>
-                    <option>Work</option>
-                    <option>Travel</option>
-                    <option>Garden</option>
-                    <option>Parenting</option>
+                <select class="form-control" id="category_name" name="category_name" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <br>
