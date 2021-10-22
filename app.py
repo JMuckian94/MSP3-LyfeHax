@@ -57,7 +57,7 @@ def signup():
     Forwards user onto their new member profile
     """
     if "user" in session:
-        flash('You are already signed in!')
+        flash('You are already signed up!')
         return redirect(url_for("index"))
 
     if request.method == "POST":
@@ -99,11 +99,10 @@ def signup():
 
 
 # Login
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["GET"])
 def login():
     """
-    Allows the user to login if they have an account
-    Redirects to member profile
+    Check if user is not logged in already
     """
     if "user" in session:
         existing_user = user_collection.find_one({"username": session["user"]})
@@ -139,13 +138,11 @@ def user_auth():
             return redirect(url_for(
                 "profile", user=existing_user["username"]))
 
-        else:
-            flash("Wrong username and/or password")
-            return redirect(url_for("login"))
+        flash("Wrong username and/or password")
+        return redirect(url_for("login"))
 
-    else:
-        flash("You must be registered first before you can log in.")
-        return redirect(url_for("pages/signup"))
+    flash("You must be registered first before you can log in.")
+    return redirect(url_for("pages/signup"))
 
 
 @app.route("/logout")
@@ -159,7 +156,7 @@ def logout():
     return render_template("pages/index.html")
 
 
-@app.route("/profile/<user>")
+@app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
     """
     User Profile
