@@ -10,7 +10,7 @@
                     <h4><i class="fas fa-book"></i> Title</h4>
                 </label>
                 <textarea class="form-control" name="hax_title" id="hax_title" minlength="5" maxlength="50"
-                    placeholder="Between 5 and 50 characters" required></textarea>
+                    placeholder="Between 5 and 50 characters" required>{{ hack.hax_title }}</textarea>
             </div>
             <br>
             <!-- category selector -->
@@ -19,9 +19,13 @@
                     <p><i class="fas fa-folder"></i> Category</p>
                 </label>
                 <select class="form-control" id="category_name" name="category_name" required>
-                    <option value="" disabled selected>Choose Category</option>
+                    <option value="" disabled>Choose Category</option>
                     {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% if category.category_name == hack.category_name %}
+                            <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                        {% else %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -32,13 +36,15 @@
                     <p><i class="fas fa-pencil-alt"></i> Main Body</p>
                 </label>
                 <textarea class="form-control mb-4" name="hax_text_body" id="hax_text_body"
-                    placeholder="Between 30 and 600 characters" rows="5" minlength="30" maxlength="600"
-                    required></textarea>
+                    placeholder="Between 30 and 800 characters" rows="5" minlength="30" maxlength="800"
+                    required>{{ hack.hax_text_body }}</textarea>
             </div>
             <!-- submit button -->
             <div class="row">
                 <div class="col-12">
-                    <button type="submit" class="btn btn-large">EDIT HAX <i class="fas fa-edit submit-btn"></i></button>
+                    <button type="submit" class="btn btn-success">EDIT HAX <i class="fas fa-edit submit-btn"></i></button>
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_hax') }}" class="btn btn-danger">CANCEL <i class="fas fa-times-circle right cancel-btn"></i></a>
                 </div>
             </div>
         </form>
