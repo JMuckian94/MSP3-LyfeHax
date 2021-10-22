@@ -126,6 +126,11 @@ img {
     font-size: 1.5rem;
 }
 
+.btn-sm {
+    float: right;
+    margin: .4rem;
+}
+
 #legoman-img{
     margin-top: -2rem;
 }

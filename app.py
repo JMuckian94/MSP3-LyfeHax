@@ -192,6 +192,19 @@ def add_hack_post():
     return render_template("pages/add_hack_post.html", categories=categories)
 
 
+@app.route("/edit_hack/<hax_id>", methods=["GET", "POST"])
+def edit_hack(hax_id):
+    """
+    Allows user to edit their posted hax
+    """
+    hack = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "pages/edit_hack_post",
+        hack=hack, categories=categories)
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     """

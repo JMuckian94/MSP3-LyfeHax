@@ -1,0 +1,48 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 card">
+        <h2 class="text-center"> Edit Hax <i class="fas fa-mouse"></i></h2>
+        <form method="POST" action="{{ url_for('edit_hack', hax_id=hack._id) }}">
+            <!-- hax post title -->
+            <div class="form-group">
+                <label for="hax_title">
+                    <h4><i class="fas fa-book"></i> Title</h4>
+                </label>
+                <textarea class="form-control" name="hax_title" id="hax_title" minlength="5" maxlength="50"
+                    placeholder="Between 5 and 50 characters" required></textarea>
+            </div>
+            <br>
+            <!-- category selector -->
+            <div class="form-group">
+                <label for="category_name">
+                    <p><i class="fas fa-folder"></i> Category</p>
+                </label>
+                <select class="form-control" id="category_name" name="category_name" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <!-- main body of hax post-->
+            <div class="form-group">
+                <label for="hax_text_body">
+                    <p><i class="fas fa-pencil-alt"></i> Main Body</p>
+                </label>
+                <textarea class="form-control mb-4" name="hax_text_body" id="hax_text_body"
+                    placeholder="Between 30 and 600 characters" rows="5" minlength="30" maxlength="600"
+                    required></textarea>
+            </div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-large">EDIT HAX <i class="fas fa-edit submit-btn"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
