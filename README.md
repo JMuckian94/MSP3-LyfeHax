@@ -33,47 +33,8 @@ To create a life hacks quick tips website where users can share their tips and t
 - Use environment variables, or files that are in .gitignore, to hide all secret keys
 - Ensure that DEBUG mode is turned off in production versions
 
-## Design Choices
-
-### NavBar
-
-For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
-
-### Home/Index Page
-
-The home page has two image carousels depicting workshops, tool collections, and arts and crafts. These are to signal the purpose of the site to first time users and to add visual decoration. Beneath the hero images, the intro section details to new users the purpose of the site, explains what a "Life Hack" is and has a contact form section at the bottom for users to get in touch.
-
-### Hax Page
-
- The 'Hax', what I will be referring to as the user posts, will be displayed in decending order. Each of the hax will have a title, the username of the poster, the date it was posted, and the body. If the user has created a hax they will have EDIT and DELETE buttons available to them. These buttons will highlight blue for edit, green for add, and red for delete to give user feedback on what they are clicking. 
-### Sign Up Page
-
-On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create, edit, and delete posts of their own where a standard visitor is only able to read posts. The form has three input sections: A Password, Repeat Password Check and Username. Once the user has completed the form correctly, and clicked the submit button, they will be linked to their new profile page, with a welcome message displayed, and the data they inputted in the form will be saved to the database. 
-
-### Log In Page
-
- The Log In page has a similar layout to the Sign Up page with the only real difference being there is no password check for returning users. The grid is split into two colomns with a decorative image on one side and the injected Log In form on the other.
-
-### Add Hax Post
-
-The Add New Hax page will contain a form, decorated with FontAwesome icons, where users can create a new "HAX" post. They have between 5 and 50 characters for the title, a choice of available categories from a dropdown menu, and a main body with an allowed length of between 30 and 600 characters. This is to stop users from posting spam posts with little to no or too much data in them.
-
-###
-
-
-
-### Footer
-
-The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax.ie became a recognisable brand and needed a social media footprint like most modern companies.
-
-### Admin Page
-
-
-
 ## User Stories
 
-- As a user, I want to be able to navigate the page using a screen reader with all page elements labelled appropriately
-- As a user, I want all of the content to be of appropriate size on all screens with no overflow
 - As a user, I want to be able to view the posts of website members and navigate through them intuatively
 - As a user, I want to be able to join as a member and begin posting my own content
 - As a user, I want the site to provide visual feedback as I navigate around and interact with visible elements
@@ -107,11 +68,14 @@ They will require the site to allow them to make a membership account and post o
 
 They will expect the navigation elements to be similiar to what they have seen on other sites (established norms), so they can easily jump in without having to learn specific UI quirks. They will want the navbar to be sticky so that they can always click on the site logo and other navbar elements to bring them wherever they want to go. For mobile devices and small screens, they will expect the nav elements to merge into a burger icon which produces a menu transition when tapped, so as not to crowd the screen. They will want all the text and posts to be styled and ordered well.
 
+
+## Design Choices
+
 ### Visual Design Choices
 
 #### Fonts
 
-For fonts I went with [Urbanist](https://fonts.google.com/specimen/Urbanist#standard-styles), which is a low-contrast, geometric sans-serif inspired by Modernist typography and design. It was created using elementary shapesand its neutrality makes it a versatile display font for print and digital mediums. I went for the font weight of 500.
+For fonts I went with [Urbanist](https://fonts.google.com/specimen/Urbanist#standard-styles), which is a low-contrast, geometric sans-serif inspired by Modernist typography and design. It was created using elementary shapesand its neutrality makes it a versatile display font for print and digital mediums. I went for the font weight of 400, 500, and 600. 
 
 #### Icons
 
@@ -120,20 +84,21 @@ I am using icons from Font [Awesome's](https://fontawesome.com/v5.15/icons?d=gal
 #### Colors
 
 I used [Coolers](https://coolors.co/) to create this neat palette image. Detail on the use of of each color below.
+![Cooler Palette](wireframes/lyfehax-palette.png)
 
 - #222 Eerie Black: This will be the primary base color for the whole site; all other colors will be layered over it
 - #ccc Light Grey: This will be used to color all text elements and form fields; text within form fields will inherit the #222 base color
-- #
-- #
-- #
+- #dc3545 Rusty Red: I have used this as a warning color for any cancel or delete buttons. The visual feedback provides defensive measures against user error
+- #198754 Sea Green: I have used this color as a background for the flash messages and any confirm buttons. This again provides some visual feedback for the user and draws attention to where it is needed.
+- #0d6efd Blue Crayola
 
 #### Structure
 
-The structure is controlled using [Bootstrap v5.1.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/). This grid system allowed me to set responsive html5 elements without the need to write media queries for each screen width breakpoint. I have written css styles for the various elements on the site and tweaked the positioning of certain elements within the row/column structure. For smaller screens I hide certain elements, such as hero images, so as not to crowd the page for the user.
+The structure is controlled using [Bootstrap v5.1.1](https://getbootstrap.com/docs/5.0/getting-started/introduction/). This grid system allowed me to set responsive html elements without the need to write media queries for each screen width breakpoint. I have written css styles for the various elements on the site and tweaked the positioning of certain elements within the row/column structure. For smaller screens I hide certain elements, such as hero images, so as not to crowd the page for the user.
 
 ## Wireframes
 
-Here are the links to my wireframes:
+Here are the links to my wireframes. They were created using [Balsamic](https://balsamiq.com/wireframes/) software:
 
 ### [Desktop Wireframe Folder](wireframes/desktop)
 
@@ -141,7 +106,66 @@ Here are the links to my wireframes:
 
 ### [Mobile Wireframe Folder](wireframes/tablet)
 
+## Database Structure
+
+I have used MongoDB to set up the database for this project with the following collections:
+
+#### **users:**
+
+Key      | Value
+---------|-----------
+_id      | ObjectId
+username | String
+password | String
+
+#### **hax:**
+
+Key             | Value
+----------------|-----------
+_id             | ObjectId
+category_name   | String
+hax_title       | String
+hax_text_body   | String
+post_date       | String
+posted_by       | String
+
+#### **categories:**
+
+Key             | Value
+----------------|-----------
+_id             | ObjectId
+category_name   | String
+
 ## Features
+### NavBar
+
+For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
+
+### Home/Index Page
+
+The home page has two image carousels depicting workshops, tool collections, and arts and crafts. These are to signal the purpose of the site to first time users and to add visual decoration. Beneath the hero images, the intro section details to new users the purpose of the site, explains what a "Life Hack" is and has a contact form section at the bottom for users to get in touch.
+
+### Hax Page
+
+ The 'Hax', what I will be referring to as the user posts, will be displayed in decending order. Each of the hax will have a title, the username of the poster, the date it was posted, and the body. If the user has created a hax they will have EDIT and DELETE buttons available to them. These buttons will highlight blue for edit, green for add, and red for delete to give user feedback on what they are clicking. 
+### Sign Up Page
+
+On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create, edit, and delete posts of their own where a standard visitor is only able to read posts. The form has three input sections: A Password, Repeat Password Check and Username. Once the user has completed the form correctly, and clicked the submit button, they will be linked to their new profile page, with a welcome message displayed, and the data they inputted in the form will be saved to the database. 
+
+### Log In Page
+
+ The Log In page has a similar layout to the Sign Up page with the only real difference being there is no password check for returning users. The grid is split into two colomns with a decorative image on one side and the injected Log In form on the other.
+
+### Add Hax Post
+
+The Add New Hax page will contain a form, decorated with FontAwesome icons, where users can create a new "HAX" post. They have between 5 and 50 characters for the title, a choice of available categories from a dropdown menu, and a main body with an allowed length of between 30 and 600 characters. This is to stop users from posting spam posts with little to no or too much data in them.
+
+### Footer
+
+The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax.ie became a recognisable brand and needed a social media footprint like most modern companies.
+
+
+
 
 ### Intro Section
 

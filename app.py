@@ -211,7 +211,7 @@ def edit_hack(hax_id):
     hack = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
-        "pages/edit_hack_post",
+        "pages/edit_hack_post.html",
         hack=hack, categories=categories)
 
 
