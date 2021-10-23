@@ -2,7 +2,7 @@
 
 ## Project Objective
 
-To create a life hacks quick tips website where users can share their tips and tricks with other web users. They will be able to create a basic account which will allow them to post content. Content will just be text for now. Once the user posts their content to the page the post will be assigned the username of the content creator and will also have the date it was posted.
+To create a life hacks quick tips website where users can share their tips and tricks with other web users. They will be able to create a basic account which will allow them to post content. Content will contain a title, category and body element within which users can input data. Once the user posts their content to the page the post will be assigned the username of the content creator and will also have the date it was posted. Users will be able to edit and delete their posts as well but won't have the same ability to edit or delete other user posts. "Hax" is what I will be referring to as the plural of hacks for this project just to move away from the generic.
 
 ## Website Design Goals
 
@@ -33,27 +33,34 @@ To create a life hacks quick tips website where users can share their tips and t
 - Use environment variables, or files that are in .gitignore, to hide all secret keys
 - Ensure that DEBUG mode is turned off in production versions
 
-## UX
+## Design Choices
 
 ### NavBar
 
-For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, About, Join Up, and Contact. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked.
+For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
 
 ### Home/Index Page
 
-The home page has two images depicting workshops, tool collections, and arts and crafts. These are to signal the purpose of the site to first time users and to add visual decoration. Beneath the hero images, the primary content of the site will be displayed. The 'Hax', what I will be referring to as the user posts, will be displated in a 4x4 grid. Each hax will take up one of two collumns on larger screens. On smaller screens the hax will be displayed using full rows. Each of the hax will have a title, the username of the poster, the date it was posted, and a small preview of the full post. If the post is larger than X number of characters then the rest of the post will be hidden and a link (Read more...) will be displayed.
+The home page has two image carousels depicting workshops, tool collections, and arts and crafts. These are to signal the purpose of the site to first time users and to add visual decoration. Beneath the hero images, the intro section details to new users the purpose of the site, explains what a "Life Hack" is and has a contact form section at the bottom for users to get in touch.
 
-### About Page
+### Hax Page
 
-The about page will have similar hero image layout at the top of the page. Beneath these images the 'About Us' section is displayed. This row contains a short paragraph explaining the purpose for the website in relation to the user. This paragraph has a complementing picture alongside it, providing decoration in an otherwise blank space. The sides have been reversed for the next row, with the text explaining what a life hack is and a picture alongside.
+ The 'Hax', what I will be referring to as the user posts, will be displayed in decending order. Each of the hax will have a title, the username of the poster, the date it was posted, and the body. If the user has created a hax they will have EDIT and DELETE buttons available to them. These buttons will highlight blue for edit, green for add, and red for delete to give user feedback on what they are clicking. 
+### Sign Up Page
 
-### Membership Page
+On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create, edit, and delete posts of their own where a standard visitor is only able to read posts. The form has three input sections: A Password, Repeat Password Check and Username. Once the user has completed the form correctly, and clicked the submit button, they will be linked to their new profile page, with a welcome message displayed, and the data they inputted in the form will be saved to the database. 
 
-On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create posts of their own where a standard user is only able to read posts. The form has three input sections: Email, Password (IMPLEMENT A REPEAT PASSWORD CHECK), and Username. Once the user has completed the form correctly, and clicked the submit button, the text on the page will change and the data they inputted in the form will be saved to the database. 
+### Log In Page
 
-### Contact Page
+ The Log In page has a similar layout to the Sign Up page with the only real difference being there is no password check for returning users. The grid is split into two colomns with a decorative image on one side and the injected Log In form on the other.
 
-This page will have a contact form to fill out for anyone who wants to contact the site owner. It includes fields for the users email and a text area section for submitting queries. There is a submit button at the bottom of the form. (A MESSAGE RECIEVED NOTIFICATION NEEDS TO BE IMPLEMENTED). This page is decorated similarly to the others with varios images in appropriate places.
+### Add Hax Post
+
+The Add New Hax page will contain a form, decorated with FontAwesome icons, where users can create a new "HAX" post. They have between 5 and 50 characters for the title, a choice of available categories from a dropdown menu, and a main body with an allowed length of between 30 and 600 characters. This is to stop users from posting spam posts with little to no or too much data in them.
+
+###
+
+
 
 ### Footer
 
