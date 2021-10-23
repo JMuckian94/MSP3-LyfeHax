@@ -38,7 +38,6 @@ To create a life hacks quick tips website where users can share their tips and t
 
 - As a user, I want to be able to view the posts of website members and navigate through them intuatively
 - As a user, I want to be able to join as a member and begin posting my own content
-- As a user, I want the site to provide visual feedback as I navigate around and interact with visible elements
 - As a user, I want the website to store my membership credentials securely in a database
 - As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
 - As a user, I as a member, want to be able to edit and delete posts as well as submit posts
@@ -140,7 +139,7 @@ category_name   | String
 ## Features
 ### NavBar
 
-For responsiveness on all platforms I used Bootstrap to control the spacing and layout of the page. The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
+The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
 
 ### Home/Index Page
 
@@ -225,21 +224,68 @@ The user must be able to navigate the sight with ease and locate whatever they s
 - Working buttons which provide visual feedback
 - An active class which reminds user what page they are on
 
-
 ### Implementation
 
-...
+The navbar is sticky and available across all pages of the site to give the user options wherever they go. It contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right. 
+
+The active class has been enabled using jinja template language and will trigger based on whether the keyword matches up with the request path of the url.
+
+All button elements on forms will change color according to their associated role ie delete = red, add = green etc. They adopt their bootstrap class as the user hovers their cursor on the button.
+
 
 ### Test
 
-...
+I have clicked through every link on the navbar to make sure no paths are broken. I have observed that the active class trigger is working as intended and tracks the user based on what page they are on.
 
-### Verdict
+All button elements are hovered over and clicked on with the cursor.
 
-...
+I have scrolled up and down the page to test the sticky nav setting. I also checked smaller screen widths to see if burger collapse was working as intended.
 
----
+### Result
 
+All nav links working as intended and take the user to the intended location on the site.
+
+Active class is tracking as intended. Sticky setting and burger collapse working as intended.
+
+Button elements working as intended.
+
+### Sign Up
+
+#### User Story: As a user, I want to be able to join as a member and begin posting my own content
+
+### Plan
+
+To create a sign up form where the user can fill in a new username and password. The user will be asked to repeat password to confirm correct key inputs. After signing in, the user will be redirected to the profile page.
+The user will be notified of their success via a flash message and they will now be able to create, edit, and delete posts assigned to their account. The signup page should detect if the user already exists in the database before actioning the new sign up request. This is to stop duplicate account creation.
+
+### Implementation
+
+The form is injected into the signup template from my template form components folder. The inputs available are username, password, and repeat password. The user is notified to only use numbers and letters in their username and password creation and the form will only allow between 5 and 15 characters for each input field. The form cannot be submitted unless all fields are filled out.
+
+Once the user has filled out the form and submitted, they will be taken to their profile with a welcome message displayed. Also, the nav elements "Sign Up" and "Log In" will be hidden from view as they are not relevant to the logged in user.
+
+### Test
+
+I have tested each element of the form to make sure the code checks for required fields. I tested the form inputs by putting in special characters, names or passwords that are too short or too long.
+
+I have created a few different user accounts. I also tried to create the same account again. I finally checked to see if the navbar changes based on my signed in state.
+
+### Result
+
+Sign up form elements working as intended. User is notified whenever they deviate from the requested formats or word length. The form also wont submit until all required fields are filled.
+
+The welcome message with corresponding username is working as intended. The user is able to create new posts via the Add Hax page and can edit and delete posts that they previously made. Sign Up and Log In elements are hidden as intended and replaced with a Log Out nav option.
+
+### User Credential Storage
+
+#### User Story: As a user, I want the website to store my membership credentials securely in a database
+
+### Plan
+
+password hashing
+repeat password
+database storage
+no duplicate accounts
 ## Deployment
 
 ### Local Deployment
