@@ -17,26 +17,15 @@ To create a life hacks quick tips website where users can share their tips and t
 - Write code that meets minimum standards for readability (comments, indentation, consistent and meaningful naming conventions)
 - Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility
 - Design a data model that fits the purpose of the project
-- Develop the model into a usable non-relational database where data is stored in a consistent
-  and well-organised manner
 - Create functionality for users to create, locate, display, edit and delete records
-- Deploy a final version of the full-stack application code to a cloud-based hosting platform
-  (e.g. Heroku) and test to ensure it matches the development version
 - Ensure that final deployed code is free of commented out code and has no broken internal
   links
-- Document the deployment process in a README file in English that also explains the
-  application’s purpose and the value that it provides to its users
-- Use Git & GitHub for version control of a Full Stack web application up to deployment, using
-  commit messages to document the development process.
-- Commit final code that is free of any passwords or security sensitive information, to the
-  repository and to the hosting platform
-- Use environment variables, or files that are in .gitignore, to hide all secret keys
 - Ensure that DEBUG mode is turned off in production versions
 
 ## User Stories
 
-
-- As a user, I want to be able to view the posts of website members and navigate through them intuatively
+- As a user, I want to be able to navigate around the sight intuitively
+- As a user, I want to be able to view the posts of website members
 - As a user, I want to be able to join as a member and begin posting my own content
 - As a user, I want the website to store my membership credentials securely in a database
 - As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
@@ -226,9 +215,9 @@ The user must be able to navigate the sight with ease and locate whatever they s
 
 ### Implementation
 
-The navbar is sticky and available across all pages of the site to give the user options wherever they go. It contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right. 
+The navbar is sticky and available across all pages of the site to give the user options wherever they go. It contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
 
-The active class has been enabled using jinja template language and will trigger based on whether the keyword matches up with the request path of the url.
+The active class has been enabled using jinja template language and will trigger based on whether the keyword matches up with the request path of the url. Log Out, Add New Hax, and Profile will be hidden to logged out users while Log In and Sign Up will be hidden for logged in users.
 
 All button elements on forms will change color according to their associated role ie delete = red, add = green etc. They adopt their bootstrap class as the user hovers their cursor on the button.
 
@@ -237,7 +226,7 @@ All button elements on forms will change color according to their associated rol
 
 I have clicked through every link on the navbar to make sure no paths are broken. I have observed that the active class trigger is working as intended and tracks the user based on what page they are on.
 
-All button elements are hovered over and clicked on with the cursor.
+All button elements are hovered over and clicked on with the cursor. I have signed in and out to make sure the appropriate nav items are hiding as intended.
 
 I have scrolled up and down the page to test the sticky nav setting. I also checked smaller screen widths to see if burger collapse was working as intended.
 
@@ -246,6 +235,8 @@ I have scrolled up and down the page to test the sticky nav setting. I also chec
 All nav links working as intended and take the user to the intended location on the site.
 
 Active class is tracking as intended. Sticky setting and burger collapse working as intended.
+
+Appropriate nav items are hiding as intended.
 
 Button elements working as intended.
 
@@ -282,10 +273,42 @@ The welcome message with corresponding username is working as intended. The user
 
 ### Plan
 
-password hashing
-repeat password
-database storage
-no duplicate accounts
+My plan is to store user credentials in their own collection in the database. They will be stored in the database with 3 key:value pairs: ObjectId, Username, and Password. The user will be asked to enter their password twice to make sure they have entered what they wanted correctly.
+
+### Implementation
+
+I built a form which takes only letters and numbers between 5-15 characters as valid credentials. This is to have legitimate usernames and more secure passwords being used on the site. The form will notify the user if any of the form entries do not match the requested criteria. The form also wont submit if one or all of the fields are missing or incorrect. I used Werkzeug Security to import generate_password_hash and check_password_hash. These functions turn the user password into a string of randomly generated characters which makes the real password indecipherable without the appropriate tools or knowhow to unhash it. If there is a breach in access to the database user account passwords will be protected.
+
+### Test
+
+I have tried to enter the wrong credentials in the sign up and log in forms respectively. The app responds with the appropriate help messages requesting the right details.
+
+I clicked the submit button without filling in or filling in wrong the fields above but the app will not proceed. 
+
+On completion of either the log in or sign up form I am taken to the profile page and the appropriate flash messages are being displayed.
+
+When I check the user credentials in the database the passwords are indeed being converted into a scramble of different characters.
+
+### Result
+
+Log in and sign up forms working as intended. User cannot proceed to completion unless everything is filled out as intended and in the case of sign up both passwords are correct.
+
+All flash messages displaying as intended.
+
+Passwords are being appropriately hashed in the database to improve site security.
+
+### User Posts Assigned Username and Datetime Data
+
+#### As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
+
+### Plan
+
+### Implementation
+
+### Test
+
+### Result
+
 ## Deployment
 
 ### Local Deployment
