@@ -13,8 +13,8 @@
           <p class="card-text"><em>{{ hack.posted_by }}</em></p>
           <p class="card-text"><em>{{ hack.post_date }}</em></p>
           {% if session.user|lower == hack.posted_by|lower %}
-          <a href="" class="btn btn-sm">Done</a>
-          <a href="{{ url_for('edit_hack', hax_id=hack._id) }}" class="btn btn-sm">Edit</a>
+          <a href="{{ url_for('delete_hack', hax_id=hack._id) }}" class="btn btn-sm btn-danger">Delete</a>
+          <a href="{{ url_for('edit_hack', hax_id=hack._id) }}" class="btn btn-sm btn-primary">Edit</a>
           {% endif %}
         </div>
       </div>

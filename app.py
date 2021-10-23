@@ -207,12 +207,22 @@ def edit_hack(hax_id):
             }
         mongo.db.hax.update({"_id": ObjectId(hax_id)}, submit)
         flash("Hax Updated Successfully")
-    
+
     hack = mongo.db.hax.find_one({"_id": ObjectId(hax_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "pages/edit_hack_post",
         hack=hack, categories=categories)
+
+
+@app.route("/delete_hack/<hax_id>")
+def delete_hack(hax_id):
+    """
+    Allows users to delete the hax posts they created
+    """
+    mongo.db.hax.remove({"_id": ObjectId(hax_id)})
+    flash("Hax Post Deleted Successfully")
+    return redirect(url_for("get_hax"))
 
 
 @app.errorhandler(404)
