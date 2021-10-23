@@ -35,6 +35,7 @@ To create a life hacks quick tips website where users can share their tips and t
 
 ## User Stories
 
+
 - As a user, I want to be able to view the posts of website members and navigate through them intuatively
 - As a user, I want to be able to join as a member and begin posting my own content
 - As a user, I want the site to provide visual feedback as I navigate around and interact with visible elements
@@ -110,7 +111,7 @@ Here are the links to my wireframes. They were created using [Balsamic](https://
 
 I have used MongoDB to set up the database for this project with the following collections:
 
-#### **users:**
+#### users:
 
 Key      | Value
 ---------|-----------
@@ -118,7 +119,7 @@ _id      | ObjectId
 username | String
 password | String
 
-#### **hax:**
+#### hax:
 
 Key             | Value
 ----------------|-----------
@@ -129,7 +130,7 @@ hax_text_body   | String
 post_date       | String
 posted_by       | String
 
-#### **categories:**
+#### categories:
 
 Key             | Value
 ----------------|-----------
@@ -162,25 +163,33 @@ The Add New Hax page will contain a form, decorated with FontAwesome icons, wher
 
 ### Footer
 
-The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax.ie became a recognisable brand and needed a social media footprint like most modern companies.
+The footer element is displayed across all pages and contains social media links for the site owner to link to this sites associated social media accounts. The links are to Facebook, Instagram, Youtube and Twitter. Their real world application would be for if Lyfehax became a recognisable brand and needed a social media footprint.
+
+### Features in Summary
+
+- Intuitive navigation
+- Registration functionality
+- Sign-In and Out functionality
+- CRUD Functions:
+    - Create: user posts assigned to your user id
+    - Read: view the posts on the main hax page
+    - Update: able to update previous user posts assigned to your user_id
+    - Delete: able to remove previous posts assigned to user_id
 
 
+### Features to be implemented
 
-
-### Intro Section
-
-...
-
-## Features to be Implemented
-
-...
-
+- Have the home page contact form provide visual feedback for the user upon completion and upload data to database
+- Have a customizable user profile with, profile image, preferences and email to which you can send updates, newsletters etc
+- Have a 'forget password' functionality
+- Add pagination so the list of hax will be displayed with a max of 20 logs per page
+- Give the pagination interface buttons for sorting such as by date, ascending or decending
 ### Languages
 
-- HTML
-- CSS
-- Javascript
-- Python
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+- [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://www.python.org/)
 
 ### Framworks & External Liberaries
 
@@ -192,18 +201,30 @@ The footer element is displayed across all pages and contains social media links
 
 ### Tools
 
-- [Git](https://github.com/)
-- [Gitpod](https://gitpod.io/workspaces)
-- [Balsamiq](https://balsamiq.com/)
-- [Coolors](https://coolors.co/)
-- [Heroku](https://dashboard.heroku.com/)
-- [MongoDB](https://account.mongodb.com/account/login?n=%2Fv2%2F613f45c92db9552dee52c729&nextHash=%23clusters)
+- [Git](https://git-scm.com/)
+- [GitPod](https://www.gitpod.io/)
+- [Heroku](https://www.heroku.com/)
+- [Balsamic](https://balsamiq.com/wireframes/)
+- [W3C HTML Validation Service](https://validator.w3.org/)
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+- [techsini](http://techsini.com/)
+- [MongoDB Atlas](https://www.mongodb.com/)
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- [PyMongo](https://api.mongodb.com/python/current/tutorial.html)
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 
 ## Testing of Interactive Elements
 
+### Navigaton
+
+#### User Story:  As a user, I want to be able to navigate around the sight intuitively
 ### Plan
 
-...
+The user must be able to navigate the sight with ease and locate whatever they seek on the sight. This will require:
+- A responsive navbar
+- Working buttons which provide visual feedback
+- An active class which reminds user what page they are on
+
 
 ### Implementation
 
@@ -248,11 +269,11 @@ To clone the project:
     ```
 
 1. Sign-in or sign-up to [MongoDB](https://www.mongodb.com/) and create a new cluster
-    * Within the Sandbox, click the collections button and after click Create Database (Add My Project Data) called lyfehax-project
-    * Set up the following collections: categories, hax, users [Click here to see the exact Database Structure](#database-structure)
-    * Under the Security Menu on the left, select Database Access.
-    * Add a new database user, and keep the credentials secure
-    * Within the Network Access option, add IP Address 0.0.0.0
+    - Within the Sandbox, click the collections button and after click Create Database (Add My Project Data) called lyfehax-project
+    - Set up the following collections: categories, hax, users [Click here to see the exact Database Structure](#database-structure)
+    - Under the Security Menu on the left, select Database Access.
+    - Add a new database user, and keep the credentials secure
+    - Within the Network Access option, add IP Address 0.0.0.0
 
 1. In your IDE, create a file containing your environmental variables called env.py at the root level of the application. 
     It will need to contain the following lines and variables:
@@ -267,7 +288,7 @@ To clone the project:
     os.environ["MONGO_DBNAME"]= "DATABASE_NAME" 
     ```
 
-    Please note that you will need to update the **SECRET_KEY** with your own secret key, as well as the **MONGO_URI** and **MONGO_DBNAME** variables with those provided by MongoDB.
+    Please note that you will need to update the SECRET_KEY with your own secret key, as well as the MONGO_URI and MONGO_DBNAME variables with those provided by MongoDB.
     Tip for your SECRET_KEY, you can use a [Password Generator](https://passwordsgenerator.net/) in order to have a secure secret key.
     To find your MONGO_URI, go to your clusters and click on connect. Choose connect your application and copy the link provided. 
     Don't forget to update the necessary fields like password and database name. 
