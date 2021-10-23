@@ -130,8 +130,6 @@ img {
     font-size: 1.5rem;
 }
 
-
-
 .btn-sm {
     float: right;
     margin: .4rem;
@@ -148,6 +146,10 @@ img {
 #social-network-icons {
     text-align: center;
     margin-top: 7rem;
+}
+
+#social-network-icons i {
+    color: #ccc;
 }
 
 #flash-message h3 {
