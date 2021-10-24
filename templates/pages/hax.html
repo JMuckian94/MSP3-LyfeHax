@@ -25,11 +25,11 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Are you sure you want to delete this post?</h5>
+        <h4 class="modal-title">Are you sure you want to delete this post?</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="deleteModal"></button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         <a href="{{ url_for('delete_hack', hax_id=hack._id) }}" class="btn btn-sm btn-danger">Delete</a>
       </div>
     </div>
