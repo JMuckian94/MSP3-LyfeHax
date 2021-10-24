@@ -9,11 +9,11 @@ To create a life hacks quick tips website where users can share their tips and t
 - Design a front end for a data-driven web application that meets accessibility guidelines, follows the principles of UX design, meets its given purpose and provides a set of user interactions
 - Implement custom HTML and CSS code to create a responsive full-stack application consisting of one or more HTML pages with relevant responses to user actions and a set of data manipulation functions
 - Build a non-relational database-backed Flask web application that allows users to store and manipulate data records about a particular domain
-- Design a database structure that is relevant for your domain, consisting of a minimum of one collection
+- Design a database structure that is relevant for my domain, consisting of a minimum of one collection
 - Design and implement manual test procedures to assess functionality, usability, responsiveness and data management within the Full Stack web application
 - Write Python code that is consistent in style and conforms to the PEP8 style guide (or another explicitly mentioned style guide, such as Google's) and validated HTML and CSS code
-- Include sufficient custom Python logic to to demonstrate your proficiency in the language
-- Include functions with compound statements such as if conditions and/or loops in your Python code
+- Include sufficient custom Python logic to to demonstrate my proficiency in the language
+- Include functions with compound statements such as if conditions and/or loops in my Python code
 - Write code that meets minimum standards for readability (comments, indentation, consistent and meaningful naming conventions)
 - Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility
 - Create functionality for users to create, locate, display, edit and delete records
@@ -194,7 +194,6 @@ The footer element is displayed across all pages and contains social media links
 - [Balsamic](https://balsamiq.com/wireframes/)
 - [W3C HTML Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-- [techsini](http://techsini.com/)
 - [MongoDB Atlas](https://www.mongodb.com/)
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 - [PyMongo](https://api.mongodb.com/python/current/tutorial.html)
