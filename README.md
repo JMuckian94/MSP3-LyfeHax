@@ -6,20 +6,18 @@ To create a life hacks quick tips website where users can share their tips and t
 
 ## Website Design Goals
 
-- Design a front end for a data-driven web application that meets accessibility guidelines, follows the principles of UX design, meets its given purpose and provides a set of     user interactions
-- Implement custom HTML and CSS code to create a responsive full-stack application consisting of one or more HTML pages with relevant responses to user actions and a set of data   manipulation functions
+- Design a front end for a data-driven web application that meets accessibility guidelines, follows the principles of UX design, meets its given purpose and provides a set of user interactions
+- Implement custom HTML and CSS code to create a responsive full-stack application consisting of one or more HTML pages with relevant responses to user actions and a set of data manipulation functions
 - Build a non-relational database-backed Flask web application that allows users to store and manipulate data records about a particular domain
 - Design a database structure that is relevant for your domain, consisting of a minimum of one collection
 - Design and implement manual test procedures to assess functionality, usability, responsiveness and data management within the Full Stack web application
-- Write Python code that is consistent in style and conforms to the PEP8 style guide (or another explicitly mentioned style guide, such as Google's) and validated HTML and CSS     code
+- Write Python code that is consistent in style and conforms to the PEP8 style guide (or another explicitly mentioned style guide, such as Google's) and validated HTML and CSS code
 - Include sufficient custom Python logic to to demonstrate your proficiency in the language
 - Include functions with compound statements such as if conditions and/or loops in your Python code
 - Write code that meets minimum standards for readability (comments, indentation, consistent and meaningful naming conventions)
 - Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility
-- Design a data model that fits the purpose of the project
 - Create functionality for users to create, locate, display, edit and delete records
-- Ensure that final deployed code is free of commented out code and has no broken internal
-  links
+- Ensure that final deployed code is free of commented out code and has no broken internal links
 - Ensure that DEBUG mode is turned off in production versions
 
 ## User Stories
@@ -30,8 +28,6 @@ To create a life hacks quick tips website where users can share their tips and t
 - As a user, I want the website to store my membership credentials securely in a database
 - As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
 - As a user, I as a member, want to be able to edit and delete posts as well as submit posts
-- As a user, I as an admin, want to be able to delete any users posts should they breach community guidelines
-
 
 ## User Requirements and Expectations
 
@@ -45,7 +41,7 @@ The Site Owner/Administrator will require the site to collect and store data fro
 
 The Site Owner/Administrator will expect the site to load correctly without visual errors. This means having all images, fonts and formats loading without overflowing or clashing with other sections of the page. The posts of users must be clearly distinguishable between each other with margins and borders marking where one post ends and the next begins. I want the username and date of posting to appear in the appropriate location on every post, with username in top left and date in top right, and to be of legible size on all screen widths. 
 
-The site must scale appropriately on all screen widths and utilise the BOOTSTRAP grid effectively. The colours and images must be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
+The site must scale appropriately on all screen widths and utilise the Bootstrap grid effectively. The colours and images must be appropriate for the theme of the website. The colours must be attractive to the user without affecting overall readability of the content.
 
 ### Standard User
 
@@ -126,6 +122,7 @@ _id             | ObjectId
 category_name   | String
 
 ## Features
+
 ### NavBar
 
 The navbar has been set to sticky and will follow the user as they scroll down the page. The navbar contains the website brand, which is Lyfehax.ie, as well as the nav elements of Home, Hax, Sign Up, Log In, Log Out, Add New Hax, and Profile. These elements can merge into a hamburger on smaller screens and will appear as a dropdown menu once the hamburger element is clicked with items floated to the right.
@@ -137,6 +134,7 @@ The home page has two image carousels depicting workshops, tool collections, and
 ### Hax Page
 
  The 'Hax', what I will be referring to as the user posts, will be displayed in decending order. Each of the hax will have a title, the username of the poster, the date it was posted, and the body. If the user has created a hax they will have EDIT and DELETE buttons available to them. These buttons will highlight blue for edit, green for add, and red for delete to give user feedback on what they are clicking. 
+
 ### Sign Up Page
 
 On this page the user will be encouraged to sign up to become a user on the site. This will allow them the ability to create, edit, and delete posts of their own where a standard visitor is only able to read posts. The form has three input sections: A Password, Repeat Password Check and Username. Once the user has completed the form correctly, and clicked the submit button, they will be linked to their new profile page, with a welcome message displayed, and the data they inputted in the form will be saved to the database. 
@@ -161,8 +159,8 @@ The footer element is displayed across all pages and contains social media links
 - CRUD Functions:
     - Create: user posts assigned to your user id
     - Read: view the posts on the main hax page
-    - Update: able to update previous user posts assigned to your user_id
-    - Delete: able to remove previous posts assigned to user_id
+    - Update: able to update previous user posts assigned to your username
+    - Delete: able to remove previous posts assigned to username
 
 
 ### Features to be implemented
@@ -172,6 +170,7 @@ The footer element is displayed across all pages and contains social media links
 - Have a 'forget password' functionality
 - Add pagination so the list of hax will be displayed with a max of 20 logs per page
 - Give the pagination interface buttons for sorting such as by date, ascending or decending
+
 ### Languages
 
 - [HTML](https://en.wikipedia.org/wiki/HTML)
@@ -427,9 +426,9 @@ To clone the project:
 
 ### Content / Media
 
-...
+Unsplash's users who create the images I used can be found in my [img](https://github.com/JMuckian94/MSP3-LyfeHax/tree/main/static/img) folder. Their names are contained within the jpg filenames. I thank the Unsplash community for making their contributions freely available to broke students like me. 
 
 ### Acknowledgements
 
-...
+I would like to thank the Code Institute Tutor Tim Nelson for his informative tutorials on how to build a flask application. I thank my mentor Simen [Eventyret_mentor](https://github.com/Eventyret) for looking over my work and keeping me on track. I thank the [Stackoverflow](https://stackoverflow.com/) community for being the light in the darkness when I am in a pit of bugs and confusion. Finally, I'd like to thank the Code Institute Slack community for being responsive and kind with their assistance.
 
