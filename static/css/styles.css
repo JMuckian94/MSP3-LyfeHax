@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Urbanist',sans-serif;
-    background-color: #222222;
+    background-color: #222;
     color: #ccc;
 }
 
@@ -48,7 +48,7 @@ h4 {
 }
 
 a {
-    color: #222222;
+    color: #222;
 }
 
 a:focus,
@@ -58,13 +58,17 @@ a:hover {
 }
 
 i {
-    color: #111;
+    color: #222;
     font-size: 3rem;
 }
 
 img {
     max-height: 30rem;
     max-width: 40rem;
+}
+
+.h-dark {
+    color: #222;
 }
 
 .carousel-item img {
@@ -80,7 +84,7 @@ img {
 }
 
 .navbar {
-    background-color: #222222;
+    background-color: #222;
     border: 1px solid #ccc;
 }
 
@@ -90,11 +94,21 @@ img {
 }
 
 .form-control {
-    color: #111;
+    color: rgb(0, 0, 0);
 }
 
 .form-help {
     font-size: 1rem;
+}
+
+.form-titles {
+    font-size: 2.5rem;
+    color: #222;
+}
+
+.form-labels {
+    font-size: 2rem;
+    color: #222;
 }
 
 .btn {
@@ -135,7 +149,7 @@ img {
     margin: .4rem;
 }
 
-#legoman-img{
+#legoman-img {
     margin-top: -2rem;
 }
 
