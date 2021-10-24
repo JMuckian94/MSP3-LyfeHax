@@ -1,4 +1,4 @@
-# Gaming Trivia
+# LyfeHax
 
 ## Project Objective
 
@@ -26,7 +26,7 @@ To create a life hacks quick tips website where users can share their tips and t
 
 - As a user, I want to be able to navigate around the sight intuitively
 - As a user, I want to be able to view the posts of website members
-- As a user, I want to be able to join as a member and begin posting my own content
+- As a user, I want to be able to join as a member with my own profile and username
 - As a user, I want the website to store my membership credentials securely in a database
 - As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
 - As a user, I as a member, want to be able to edit and delete posts as well as submit posts
@@ -201,17 +201,15 @@ The footer element is displayed across all pages and contains social media links
 - [PyMongo](https://api.mongodb.com/python/current/tutorial.html)
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 
-## Testing of Interactive Elements
+# Testing of Interactive Elements
 
 ### Navigaton
 
 #### User Story:  As a user, I want to be able to navigate around the sight intuitively
+
 ### Plan
 
-The user must be able to navigate the sight with ease and locate whatever they seek on the sight. This will require:
-- A responsive navbar
-- Working buttons which provide visual feedback
-- An active class which reminds user what page they are on
+The user must be able to navigate the sight with ease and locate whatever they seek on the sight. This will require a responsive navbar, working buttons which provide visual feedback and an active class which reminds user what page they are on
 
 ### Implementation
 
@@ -221,51 +219,49 @@ The active class has been enabled using jinja template language and will trigger
 
 All button elements on forms will change color according to their associated role ie delete = red, add = green etc. They adopt their bootstrap class as the user hovers their cursor on the button.
 
-
 ### Test
 
 I have clicked through every link on the navbar to make sure no paths are broken. I have observed that the active class trigger is working as intended and tracks the user based on what page they are on.
 
-All button elements are hovered over and clicked on with the cursor. I have signed in and out to make sure the appropriate nav items are hiding as intended.
-
-I have scrolled up and down the page to test the sticky nav setting. I also checked smaller screen widths to see if burger collapse was working as intended.
+All button elements are hovered over and clicked on with the cursor. I have signed in and out to make sure the appropriate nav items are hiding as intended. I have scrolled up and down the page to test the sticky nav setting. I also checked smaller screen widths to see if burger collapse was working as intended.
 
 ### Result
 
-All nav links working as intended and take the user to the intended location on the site.
+All nav links working as intended and take the user to the intended location on the site. Active class is tracking as intended. Sticky setting and burger collapse working as intended.
 
-Active class is tracking as intended. Sticky setting and burger collapse working as intended.
+Appropriate nav items are hiding as intended. Button elements working as intended.
 
-Appropriate nav items are hiding as intended.
-
-Button elements working as intended.
 
 ### Sign Up
 
-#### User Story: As a user, I want to be able to join as a member and begin posting my own content
+#### User Story: As a user, I want to be able to join as a member with my own profile and username
 
 ### Plan
 
 To create a sign up form where the user can fill in a new username and password. The user will be asked to repeat password to confirm correct key inputs. After signing in, the user will be redirected to the profile page.
+
 The user will be notified of their success via a flash message and they will now be able to create, edit, and delete posts assigned to their account. The signup page should detect if the user already exists in the database before actioning the new sign up request. This is to stop duplicate account creation.
 
 ### Implementation
 
-The form is injected into the signup template from my template form components folder. The inputs available are username, password, and repeat password. The user is notified to only use numbers and letters in their username and password creation and the form will only allow between 5 and 15 characters for each input field. The form cannot be submitted unless all fields are filled out.
+The form is injected into the signup template from my template/components/forms folder. The inputs available are username, password, and repeat password. The user is notified to only use numbers and letters in their username and password creation and the form will only allow between 5 and 15 characters for each input field. The form cannot be submitted unless all fields are filled out.
 
-Once the user has filled out the form and submitted, they will be taken to their profile with a welcome message displayed. Also, the nav elements "Sign Up" and "Log In" will be hidden from view as they are not relevant to the logged in user.
+Once the user has filled out the form and submitted, they will be taken to their profile with a welcome message displayed. Also, the nav elements "Sign Up" and "Log In", in the navbar, will be hidden from view as they are not relevant to the logged in user. The user profile also has buttons displayed that can take them to the main hax page, where all user hax are stored and displayed, or the Add New Hax form, allowing them to jump in and start adding posts right away.
 
 ### Test
 
 I have tested each element of the form to make sure the code checks for required fields. I tested the form inputs by putting in special characters, names or passwords that are too short or too long.
 
-I have created a few different user accounts. I also tried to create the same account again. I finally checked to see if the navbar changes based on my signed in state.
+I have created a few different user accounts. I also tried to create the same account again. I finally checked to see if the navbar changes based on my signed in state. 
+
+I have tested all button links. I also checked for the appropriate username being displayed for welcoming new or returning users.
 
 ### Result
 
-Sign up form elements working as intended. User is notified whenever they deviate from the requested formats or word length. The form also wont submit until all required fields are filled.
+Sign up form elements working as intended. User is notified whenever they deviate from the requested formats or word length. The form also wont submit until all required fields are filled. The welcome message with corresponding username is working as intended. 
 
-The welcome message with corresponding username is working as intended. The user is able to create new posts via the Add Hax page and can edit and delete posts that they previously made. Sign Up and Log In elements are hidden as intended and replaced with a Log Out nav option.
+Sign Up and Log In elements are hidden as intended and replaced with Log Out, Add New Hax and Profile nav options. All buttons are working as intended and the flash message displays the in session username with the welcome message on their new profile.
+
 
 ### User Credential Storage
 
@@ -281,33 +277,56 @@ I built a form which takes only letters and numbers between 5-15 characters as v
 
 ### Test
 
-I have tried to enter the wrong credentials in the sign up and log in forms respectively. The app responds with the appropriate help messages requesting the right details.
+I have tried to enter the wrong credentials in the sign up and log in forms respectively. The app responds with the appropriate help messages requesting the right details. I clicked the submit button without filling in or filling in wrong the fields above but the app will not proceed. 
 
-I clicked the submit button without filling in or filling in wrong the fields above but the app will not proceed. 
-
-On completion of either the log in or sign up form I am taken to the profile page and the appropriate flash messages are being displayed.
-
-When I check the user credentials in the database the passwords are indeed being converted into a scramble of different characters.
+On completion of either the log in or sign up form I am taken to the profile page and the appropriate flash messages are being displayed. When I check the user credentials in the database the passwords are indeed being converted into a scramble of different characters.
 
 ### Result
 
-Log in and sign up forms working as intended. User cannot proceed to completion unless everything is filled out as intended and in the case of sign up both passwords are correct.
+Log in and sign up forms working as intended. User cannot proceed to completion unless everything is filled out as intended and in the case of sign up both passwords are correct. All flash messages displaying as intended. Passwords are being appropriately hashed in the database to improve site security.
 
-All flash messages displaying as intended.
 
-Passwords are being appropriately hashed in the database to improve site security.
+### User Creation of Posts
 
-### User Posts Assigned Username and Datetime Data
+#### As a user, I as a member, want to be able to submit posts avaialable for other users to see with the date it was posted visible
+
+### Plan
+
+I will need to create a page with a user form which allows the user options to fill in a new entry. I must label and style each part appropriately so the user knows where to input the data. Each post must require a title, category choice, and a text body. I must set limits on the title and body, as if they are too short they most likely will not contain anything meaningful, or if they are too long they will take up too much space on the main hax page. On the back end I will need the function which creates new hax posts to add a date to the new post.
+
+### Implementation
+
+I have created a separate page that the user can access once an account has been created. There are two options, either via the navbar link Add New Hax or via the button they would have seen on their new profile once they joined. The form has the title, body, and category selector as options. Each option has a placeholder informing the user of the length restrictions and what is required of them. The user has a submit button and a cancel button for if the user changes their mind about posting. The date function has been added using the datetime import and the output will display in the format DD/MM/YYYY.
+
+### Test
+
+I have tested the button links to the Add New Hax page. I have checked each form entry to see if checks for length are working. I tried entering to much and too little text as well as ignoring form fields. I also tried both submitting and cancelling. I finally checked to see if the users new post was displayed on the Hax page with the appropriate date and date format attatched.
+
+### Result
+
+Button links to Add New Hax page working as intended. All form entry checks are working as intended. Add and Cancel buttons working as intended. Session users new post displayed with the correct date and date format appearing towards the bottom of the post.
+
+
+### User Posts Assigned Username / Paired to Session User
 
 #### As a user, I want the website to keep my posts assigned to my user profile with my username visible to other users
 
 ### Plan
 
+To accomplish this I will need to create buttons for user posts which give the option to edit and delete. I will need to have these buttons only show on hax posts linked to the user in session.
+
 ### Implementation
+
+I have created the hax page to extract the hax data from the database. This includes the post date and the user who posted it. I have placed a jinja {% if else %} statement above the section where the edit and delete buttons are coded. The if else statement will check the posted_by variable to see if the user in session matches the user who posted. Since you cant create duplicate usernames this should work fine as a defensive measure. If the session user matches the posted_by variable on the hax post the user will be displayed the edit and delete buttons. I have also installed a model for the delete function as it was too easy before to misclick and accidentally delete a post.
 
 ### Test
 
+I have signed into different user accounts to check whether the edit and delete buttons are appropriately shown or hidden. I also clicked each buttons to check what occurs. I also tried to create a duplicate user account to try and alter another users post.
+
 ### Result
+
+Signing in to different accounts, I could see the buttons shown for the session users posts and hidden for other account posts. These buttons are working as intended. The defensive delete modal is also working as intended, warning the user of the finality of their action. I tried to create another account but was unsuccessful. The app notified me via flash message that the username is already in use.
+
 
 ## Deployment
 
