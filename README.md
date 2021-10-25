@@ -1,5 +1,7 @@
 # LyfeHax
 
+[View the live project here](https://lyfe-hax.herokuapp.com/)
+
 ## Project Objective
 
 To create a life hacks quick tips website where users can share their tips and tricks with other web users. They will be able to create a basic account which will allow them to post content. Content will contain a title, category and body element within which users can input data. Once the user posts their content to the page the post will be assigned the username of the content creator and will also have the date it was posted. Users will be able to edit and delete their posts as well but won't have the same ability to edit or delete other user posts. "Hax" is what I will be referring to as the plural of hacks for this project just to move away from the generic.
