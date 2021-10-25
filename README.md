@@ -15,10 +15,12 @@ To create a life hacks quick tips website where users can share their tips and t
 - Include sufficient custom Python logic to to demonstrate my proficiency in the language
 - Include functions with compound statements such as if conditions and/or loops in my Python code
 - Write code that meets minimum standards for readability (comments, indentation, consistent and meaningful naming conventions)
-- Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility
 - Create functionality for users to create, locate, display, edit and delete records
-- Ensure that final deployed code is free of commented out code and has no broken internal links
-- Ensure that DEBUG mode is turned off in production versions
+
+## Website Value 
+
+- Users make use of the site to share their own data with the community, and benefit from having convenient access to the data provided by all other members.
+- The site owner advances their own goals by providing this functionality, potentially by being a regular user themselves. The site owner might also benefit from the collection of the dataset as a whole.
 
 ## User Stories
 
@@ -165,11 +167,12 @@ The footer element is displayed across all pages and contains social media links
 
 ### Features to be implemented
 
-- Have the home page contact form provide visual feedback for the user upon completion and upload data to database
+- Have the home page contact form activated and provide visual feedback for the user upon completion and upload data to database
 - Have a customizable user profile with, profile image, preferences and email to which you can send updates, newsletters etc
 - Have a 'forget password' functionality
 - Add pagination so the list of hax will be displayed with a max of 20 logs per page
 - Give the pagination interface buttons for sorting such as by date, ascending or decending
+- Have the delete modal be a separate component which is only called when the user clicks the trigger, instead of its current form where it duplicates itself for each user post
 
 ### Languages
 
@@ -325,6 +328,13 @@ I have signed into different user accounts to check whether the edit and delete 
 
 Signing in to different accounts, I could see the buttons shown for the session users posts and hidden for other account posts. These buttons are working as intended. The defensive delete modal is also working as intended, warning the user of the finality of their action. I tried to create another account but was unsuccessful. The app notified me via flash message that the username is already in use.
 
+## Known Bugs and Errors
+
+- The landing page carousels do not always loop as intended.
+- Sometimes decorative images squish when transitioning between screen breakpoints
+- The delete modal is dublicated for each user post on the hax page. This means the modal id and labels are also duplicated leading to validation errors
+
+The fixes for these issues are in the works but wont be available in time for project deadline.
 
 ## Deployment
 
